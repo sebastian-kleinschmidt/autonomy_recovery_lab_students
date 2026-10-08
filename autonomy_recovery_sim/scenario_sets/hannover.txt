@@ -1,0 +1,5 @@
+# Hannover-typische Lagen auf echtem OSM-Kartenmaterial (Robert-Enke-Strasse am Stadion,
+# Culemannstrasse in der Innenstadt). Fussball-Abpfiff und Marathon-Sperrung sind Szenarioannahmen.
+../scenarios/hannover_fussball_abpfiff.json
+../scenarios/hannover_marathon_sperrung.json
+../scenarios/hannover_marathon_laeufer.json

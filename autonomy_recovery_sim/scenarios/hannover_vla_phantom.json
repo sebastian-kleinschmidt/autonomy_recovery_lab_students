@@ -1,0 +1,61 @@
+{
+  "id": "hannover_vla_phantom",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 60.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Spurbreite und Markierung sind Szenarioannahmen; OSM enthält sie hier nicht."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 180.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "ghost",
+      "kind": "debris",
+      "s_m": 92.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.5,
+      "width_m": 1.6,
+      "phantom": true,
+      "confidence": 0.3,
+      "description": "Im Fahrkorridor zeichnet sich ein kleiner, nicht eindeutig identifizierbarer Sensorkontakt ab."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "REQUEST_ADDITIONAL_INFORMATION"
+    ],
+    "outcome": "resolved",
+    "budget_eur": 40.0,
+    "reason": "Der VLA-Fahrstack begruendet den Halt mit hoher Konfidenz mit einem Objekt in der Spur. Der Tracker meldet fuer denselben Kontakt nur track_confidence 0,3 und die Kameras sehen lediglich eine undeutliche Form. Wer Text und Tracker abgleicht, fordert eine neue Beobachtung an und entlarvt das Phantom."
+  },
+  "vla": {
+    "seed": 7,
+    "latency_ms": 120,
+    "perception_interface": "vla",
+    "faults": [
+      {
+        "type": "OVERCONFIDENT",
+        "actor_id": "ghost"
+      }
+    ]
+  }
+}

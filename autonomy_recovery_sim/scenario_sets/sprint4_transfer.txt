@@ -1,0 +1,26 @@
+# Neue Szenarien in sprint4; nicht kumulativ.
+../scenarios/hannover_freie_fahrt.json
+../scenarios/hannover_ueberholer_hinten.json
+../scenarios/hannover_verdeckung_gegenverkehr.json
+../scenarios/hannover_abbruch_blocker.json
+../scenarios/hannover_abbruch_gegenverkehr.json
+../scenarios/hannover_verdeckung_auftauchen.json
+../scenarios/hannover_verdeckung_radverkehr.json
+../scenarios/hannover_fussball_abpfiff.json
+../scenarios/hannover_marathon_sperrung.json
+../scenarios/hannover_marathon_laeufer.json
+../scenarios/hannover_wildunfall.json
+../scenarios/hannover_sitzblockade.json
+../scenarios/hannover_zootiere.json
+../scenarios/hannover_fussballfans_blockade.json
+../scenarios/hannover_umgekippter_lkw.json
+../scenarios/hannover_ladung_karton.json
+../scenarios/hannover_ladung_reifen.json
+../scenarios/hannover_ladung_holzbalken.json
+../scenarios/hannover_ladung_scherben.json
+../scenarios/hannover_ladung_verstreut.json
+../scenarios/hannover_fussgaenger_vor_lieferwagen.json
+../scenarios/hannover_gegenverkehr_zieht_vorbei.json
+../scenarios/hannover_zwei_hindernisse.json
+../scenarios/hannover_karte_veraltet_fahrgaeste.json
+../scenarios/hannover_ampel_dunkel_lieferwagen.json

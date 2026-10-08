@@ -1,0 +1,44 @@
+{
+  "id": "hannover_ladung_scherben",
+  "seed": 42,
+  "simulation": {"duration_s": 70.0, "dt_s": 0.1},
+  "road": {
+    "map_file": "../data/hannover_culemannstrasse.geojson",
+    "context_file": "../data/hannover_culemann_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Scherbenfeld und Fluessigkeit sind eine fiktive Szenarioannahme."
+  },
+  "ego": {"start_s_m": 150.0, "lane_d_m": -1.75, "target_s_m": 340.0, "cruise_speed_mps": 8.0},
+  "actors": [
+    {
+      "id": "scherbenfeld",
+      "kind": "debris",
+      "s_m": 240.0,
+      "d_m": 0.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 5.0,
+      "width_m": 7.0,
+      "behavior": "parked",
+      "description": "Zerbrochene Glasbehaelter und eine nicht identifizierte Fluessigkeit verteilen sich ueber beide Fahrtrichtungen.",
+      "obstacle_profile": {
+        "height_m": 0.1,
+        "material": "GLASS",
+        "deformability": "LOW",
+        "sharp_edges": true,
+        "liquid": true,
+        "assessment_confidence": 0.94
+      }
+    }
+  ],
+  "route": {"blocked": true, "alternative_available": true, "detour_cost_s": 180.0},
+  "recovery": {"stuck_after_s": 3.0},
+  "policy": {"allow_solid_exception": false},
+  "reference": {
+    "commands": ["REPLAN_ROUTE"],
+    "outcome": "rerouted",
+    "budget_eur": 150.0,
+    "reason": "Scharfkantiges Glas und unbekannte Fluessigkeit bedecken beide Fahrtrichtungen; eine Alternativroute vermeidet Reifen- und Gefahrstoffrisiken."
+  }
+}

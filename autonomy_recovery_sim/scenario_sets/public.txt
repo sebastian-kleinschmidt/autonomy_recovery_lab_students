@@ -1,0 +1,28 @@
+# Oeffentliche Entwicklungsfaelle; unbekannte Bewertungsfaelle liegen nicht im Studierenden-Checkout.
+../scenarios/hannover_frei.json
+../scenarios/hannover_gegenverkehr.json
+../scenarios/hannover_durchgezogen.json
+../scenarios/hannover_sichtweite.json
+../scenarios/hannover_radverkehr.json
+../scenarios/hannover_schmal.json
+../scenarios/hannover_ueberholer_hinten.json
+../scenarios/hannover_verdeckung_gegenverkehr.json
+# Erweiterung um die High-Level-Befehle (siehe COMMANDS.md)
+../scenarios/hannover_fussgaengergruppe.json
+../scenarios/hannover_baustelle_umleitung.json
+../scenarios/hannover_muelltonne.json
+../scenarios/hannover_doppelparker.json
+../scenarios/hannover_doppelparker_belegt.json
+../scenarios/hannover_lieferwagen_faehrt_los.json
+../scenarios/hannover_passagier_absetzen.json
+../scenarios/hannover_ziel_gesperrt.json
+../scenarios/hannover_leitstelle_offline.json
+# Unsicherheit, Werkzeugausfaelle und Kontrollfaelle
+../scenarios/hannover_phantom_hindernis.json
+../scenarios/hannover_veraltete_daten.json
+../scenarios/hannover_karte_veraltet.json
+../scenarios/hannover_lokalisierung_drift.json
+../scenarios/hannover_werkzeug_timeout.json
+../scenarios/hannover_werkzeugbudget_knapp.json
+../scenarios/hannover_injektion.json
+../scenarios/hannover_geplanter_halt.json

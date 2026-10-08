@@ -1,0 +1,6 @@
+# Neue Szenarien in sprint1; nicht kumulativ.
+../scenarios/hannover_fussgaengergruppe.json
+../scenarios/hannover_radverkehr.json
+../scenarios/hannover_schmal.json
+../scenarios/hannover_sichtweite.json
+../scenarios/hannover_gegenverkehr_fern.json

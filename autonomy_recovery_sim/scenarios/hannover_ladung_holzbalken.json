@@ -1,0 +1,44 @@
+{
+  "id": "hannover_ladung_holzbalken",
+  "seed": 42,
+  "simulation": {"duration_s": 80.0, "dt_s": 0.1},
+  "road": {
+    "map_file": "../data/hannover_culemannstrasse.geojson",
+    "context_file": "../data/hannover_culemann_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "shoulder_m": 0.5,
+    "assumption_note": "Der verlorene Holzbalken und seine Position sind eine fiktive Szenarioannahme."
+  },
+  "ego": {"start_s_m": 150.0, "lane_d_m": -1.75, "target_s_m": 340.0, "cruise_speed_mps": 8.0},
+  "actors": [
+    {
+      "id": "holzbalken",
+      "kind": "debris",
+      "s_m": 240.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.2,
+      "width_m": 2.4,
+      "behavior": "parked",
+      "description": "Ein massiver Holzbalken liegt quer in der eigenen Fahrspur; seine Enden reichen nahe an beide Spurraender.",
+      "obstacle_profile": {
+        "height_m": 0.24,
+        "material": "WOOD",
+        "deformability": "LOW",
+        "sharp_edges": true,
+        "liquid": false,
+        "assessment_confidence": 0.96
+      }
+    }
+  ],
+  "recovery": {"stuck_after_s": 3.0},
+  "policy": {"allow_solid_exception": false, "minimum_passing_clearance_m": 0.5},
+  "reference": {
+    "commands": ["NUDGE_AROUND_OBSTACLE"],
+    "outcome": "liberated",
+    "budget_eur": 60.0,
+    "reason": "Der starre und scharfkantige Balken darf nicht ueberrollt werden; innerhalb der eigenen Spur reicht der Raum nicht, die freie Gegenfahrbahn erlaubt ein begrenztes Vorbeifahren."
+  }
+}

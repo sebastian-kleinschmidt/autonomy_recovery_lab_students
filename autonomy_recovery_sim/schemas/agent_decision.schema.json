@@ -1,0 +1,827 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/autonomy-recovery-sim/agent_decision.schema.json",
+  "title": "AutonomyRecoverySim Agent Command 3.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "command",
+    "parameters",
+    "reason"
+  ],
+  "properties": {
+    "command": {
+      "enum": [
+        "WAIT",
+        "REPLAN_ROUTE",
+        "REVERSE_SHORT",
+        "PULL_OVER",
+        "NUDGE_AROUND_OBSTACLE",
+        "CHANGE_LANE",
+        "AVOID_TEMPORARY_OBSTRUCTION",
+        "CROSS_LOW_RISK_OBJECT",
+        "REQUEST_REMOTE_ASSISTANCE",
+        "ABORT_MISSION",
+        "SAFE_STOP",
+        "RETURN_HOME",
+        "DROP_PASSENGER",
+        "REQUEST_ADDITIONAL_INFORMATION",
+        "ESCALATE_TO_RULE_ENGINE",
+        "RESUME",
+        "CREEP_FORWARD",
+        "PEEK_OUT",
+        "OVERTAKE",
+        "TURN_AROUND",
+        "ABORT_TO_LANE",
+        "WAIT_FOR_GAP",
+        "SECURE_SCENE",
+        "REPORT_INCIDENT"
+      ]
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "WAIT"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "duration_s"
+            ],
+            "properties": {
+              "duration_s": {
+                "type": "number",
+                "minimum": 1.0,
+                "maximum": 30.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "REPLAN_ROUTE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+              "avoid_current_segment": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "REVERSE_SHORT"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "max_distance_m"
+            ],
+            "properties": {
+              "max_distance_m": {
+                "type": "number",
+                "minimum": 0.5,
+                "maximum": 5.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "PULL_OVER"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+              "side_preference": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ],
+                "default": "RIGHT"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "NUDGE_AROUND_OBSTACLE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "side",
+              "max_longitudinal_distance_m"
+            ],
+            "properties": {
+              "side": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              "max_longitudinal_distance_m": {
+                "type": "number",
+                "minimum": 5.0,
+                "maximum": 50.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "CHANGE_LANE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "direction"
+            ],
+            "properties": {
+              "direction": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "AVOID_TEMPORARY_OBSTRUCTION"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "obstruction_type",
+              "side",
+              "max_lateral_offset_m"
+            ],
+            "properties": {
+              "obstruction_type": {
+                "enum": [
+                  "CONSTRUCTION_BEACON",
+                  "TRASH_BIN",
+                  "MISPLACED_OBJECT"
+                ]
+              },
+              "side": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              "max_lateral_offset_m": {
+                "type": "number",
+                "minimum": 0.2,
+                "maximum": 2.5
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "CROSS_LOW_RISK_OBJECT"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+              "max_speed_mps": {
+                "type": "number",
+                "minimum": 0.5,
+                "maximum": 1.5,
+                "default": 1.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "REQUEST_REMOTE_ASSISTANCE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "reason_code"
+            ],
+            "properties": {
+              "reason_code": {
+                "enum": [
+                  "AMBIGUOUS_SCENE",
+                  "NO_SAFE_RECOVERY",
+                  "BLOCKED_ROUTE",
+                  "PERCEPTION_DEGRADED",
+                  "RECOVERY_TIME_EXCEEDED",
+                  "UNRECOVERABLE_BLOCKAGE",
+                  "DESTINATION_UNREACHABLE",
+                  "SAFETY_CONCERN"
+                ]
+              },
+              "summary": {
+                "type": "string",
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "ABORT_MISSION"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "reason_code"
+            ],
+            "properties": {
+              "reason_code": {
+                "enum": [
+                  "AMBIGUOUS_SCENE",
+                  "NO_SAFE_RECOVERY",
+                  "BLOCKED_ROUTE",
+                  "PERCEPTION_DEGRADED",
+                  "RECOVERY_TIME_EXCEEDED",
+                  "UNRECOVERABLE_BLOCKAGE",
+                  "DESTINATION_UNREACHABLE",
+                  "SAFETY_CONCERN"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "SAFE_STOP"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "reason_code"
+            ],
+            "properties": {
+              "reason_code": {
+                "enum": [
+                  "AMBIGUOUS_SCENE",
+                  "NO_SAFE_RECOVERY",
+                  "BLOCKED_ROUTE",
+                  "PERCEPTION_DEGRADED",
+                  "RECOVERY_TIME_EXCEEDED",
+                  "UNRECOVERABLE_BLOCKAGE",
+                  "DESTINATION_UNREACHABLE",
+                  "SAFETY_CONCERN"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "RETURN_HOME"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "DROP_PASSENGER"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "REQUEST_ADDITIONAL_INFORMATION"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "topic",
+              "duration_s"
+            ],
+            "properties": {
+              "topic": {
+                "enum": [
+                  "MOTION_REASSESSMENT",
+                  "SCENE_REFRESH",
+                  "MAP_CONSISTENCY"
+                ]
+              },
+              "duration_s": {
+                "type": "number",
+                "minimum": 1.0,
+                "maximum": 10.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "ESCALATE_TO_RULE_ENGINE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+              "focus": {
+                "enum": [
+                  "GENERAL",
+                  "PASSING",
+                  "ROUTE"
+                ],
+                "default": "GENERAL"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "RESUME"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "CREEP_FORWARD"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "max_distance_m"
+            ],
+            "properties": {
+              "max_distance_m": {
+                "type": "number",
+                "minimum": 0.5,
+                "maximum": 5.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "PEEK_OUT"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "side",
+              "lateral_offset_m"
+            ],
+            "properties": {
+              "side": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              "lateral_offset_m": {
+                "type": "number",
+                "minimum": 0.3,
+                "maximum": 1.5
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "OVERTAKE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "side",
+              "max_longitudinal_distance_m"
+            ],
+            "properties": {
+              "side": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              "max_longitudinal_distance_m": {
+                "type": "number",
+                "minimum": 5.0,
+                "maximum": 60.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "TURN_AROUND"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method"
+            ],
+            "properties": {
+              "method": {
+                "enum": [
+                  "U_TURN",
+                  "THREE_POINT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "ABORT_TO_LANE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "WAIT_FOR_GAP"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "min_gap_s",
+              "timeout_s",
+              "then",
+              "side",
+              "max_longitudinal_distance_m"
+            ],
+            "properties": {
+              "min_gap_s": {
+                "type": "number",
+                "minimum": 3.0,
+                "maximum": 15.0
+              },
+              "timeout_s": {
+                "type": "number",
+                "minimum": 5.0,
+                "maximum": 60.0
+              },
+              "then": {
+                "enum": [
+                  "OVERTAKE",
+                  "NUDGE_AROUND_OBSTACLE"
+                ]
+              },
+              "side": {
+                "enum": [
+                  "LEFT",
+                  "RIGHT"
+                ]
+              },
+              "max_longitudinal_distance_m": {
+                "type": "number",
+                "minimum": 5.0,
+                "maximum": 60.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "SECURE_SCENE"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "command": {
+            "const": "REPORT_INCIDENT"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "injured_persons_suspected"
+            ],
+            "properties": {
+              "injured_persons_suspected": {
+                "type": "boolean"
+              },
+              "summary": {
+                "type": "string",
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "hannover_umgekippter_lkw",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 70.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_culemannstrasse.geojson",
+    "context_file": "../data/hannover_culemann_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Der Unfall, die Ladung und die Fluessigkeit sind Szenarioannahmen. Der quer liegende Lkw wird durch einen kurzen, fahrbahnbreiten Grundriss modelliert."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 420.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "lkw-quer",
+      "kind": "truck",
+      "s_m": 240.0,
+      "d_m": 0.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 3.0,
+      "width_m": 9.0,
+      "behavior": "parked",
+      "description": "Ein umgekippter Lkw liegt quer ueber beide Fahrtrichtungen. Neben dem Fahrzeug ist eine unbekannte Fluessigkeit sichtbar."
+    },
+    {
+      "id": "ladung-1",
+      "kind": "debris",
+      "s_m": 246.0,
+      "d_m": -1.5,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.0,
+      "behavior": "parked",
+      "description": "Verlorene Ladung und Fahrzeugteile liegen hinter dem Lkw."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "REPLAN_ROUTE"
+    ],
+    "outcome": "rerouted",
+    "budget_eur": 150.0,
+    "reason": "Lkw, Ladung und eine unbekannte Fluessigkeit sperren die Strasse vollstaendig. Eine Alternativroute vermeidet Unfallstelle und moeglichen Gefahrstoffbereich."
+  },
+  "route": {
+    "blocked": true,
+    "alternative_available": true,
+    "detour_cost_s": 220.0
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 20.0,
+    "clears": []
+  }
+}

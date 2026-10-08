@@ -1,0 +1,70 @@
+{
+  "id": "hannover_wildunfall",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 100.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Ort und Wildwechsel sind Szenarioannahmen. Das zweite Tier steht fuer die nach einem Wildunfall moegliche Anwesenheit weiterer Tiere."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 180.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "reh-verletzt",
+      "kind": "animal",
+      "s_m": 92.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.7,
+      "width_m": 0.7,
+      "behavior": "parked",
+      "description": "Ein verletztes Reh liegt in der Fahrspur. Sein Zustand und moegliche Bewegungen sind aus der Distanz nicht sicher einzuschaetzen."
+    },
+    {
+      "id": "reh-am-fahrbahnrand",
+      "kind": "animal",
+      "s_m": 96.0,
+      "d_m": 3.2,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.7,
+      "width_m": 0.7,
+      "behavior": "parked",
+      "description": "Ein weiteres Reh steht nahe am gegenueberliegenden Fahrbahnrand."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "WAIT",
+      "REQUEST_REMOTE_ASSISTANCE"
+    ],
+    "outcome": "remote_resolved",
+    "budget_eur": 65.0,
+    "reason": "Ein verletztes Tier und ein weiteres Tier am Fahrbahnrand machen ein lokales Umfahren unvertretbar. Kurzes Warten ist zulaessig; danach koordiniert die Leitstelle Absicherung und Wildtierhilfe."
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 20.0,
+    "clears": [
+      "reh-verletzt",
+      "reh-am-fahrbahnrand"
+    ]
+  }
+}

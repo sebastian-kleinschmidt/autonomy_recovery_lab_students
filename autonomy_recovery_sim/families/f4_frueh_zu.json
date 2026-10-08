@@ -1,0 +1,131 @@
+{
+  "id": "f4_frueh_zu",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 150.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Spurbreite und Markierung sind Szenarioannahmen; OSM enthält sie hier nicht."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 260.0,
+    "cruise_speed_mps": 8.0
+  },
+  "recovery": {
+    "stuck_after_s": 3.0,
+    "max_commands": 12
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "route": {
+    "blocked": true,
+    "map_stale": true,
+    "alternative_available": true,
+    "detour_cost_s": 200.0,
+    "turn_required": true
+  },
+  "actors": [
+    {
+      "id": "stehender_transporter",
+      "kind": "van",
+      "s_m": 92.0,
+      "d_m": -1.75,
+      "length_m": 6.0,
+      "width_m": 2.4,
+      "description": "Ein Transporter steht mit Bremslicht in der eigenen Fahrspur. Was davor liegt, verdeckt er; einen Grund für den Halt sieht man von hier nicht."
+    },
+    {
+      "id": "unfallwagen",
+      "kind": "car",
+      "s_m": 106.0,
+      "d_m": 0.0,
+      "length_m": 2.0,
+      "width_m": 6.8,
+      "description": "Ein verunfallter Pkw steht quer über beiden Fahrspuren; Glassplitter liegen auf der Fahrbahn."
+    },
+    {
+      "id": "streifenwagen",
+      "kind": "car",
+      "s_m": 113.0,
+      "d_m": 1.75,
+      "direction": -1,
+      "description": "Ein Streifenwagen mit Blaulicht sichert die Unfallstelle auf der Gegenspur ab."
+    },
+    {
+      "id": "nachfolger",
+      "kind": "car",
+      "s_m": 4.0,
+      "d_m": -1.75,
+      "description": "Ein Pkw nähert sich von hinten in der eigenen Spur und hält dahinter an.",
+      "triggers": [
+        {
+          "when": {
+            "since_first_session_s": {
+              "gte": 14.0
+            }
+          },
+          "then": {
+            "start_motion": {
+              "target_speed_mps": 4.0
+            }
+          },
+          "hint": {
+            "tool": "get_tracked_objects",
+            "why": "Verkehr von hinten wird sichtbar, sobald er näher kommt; danach ist kein Platz mehr zum Wenden."
+          }
+        },
+        {
+          "when": {
+            "since_first_session_s": {
+              "gte": 32.0
+            }
+          },
+          "then": {
+            "stop": {}
+          },
+          "hint": {
+            "tool": "get_tracked_objects",
+            "why": "Der Nachfolger hält hinter dem Ego an."
+          }
+        }
+      ]
+    }
+  ],
+  "perception": {
+    "noise": {
+      "class_confusion": 0.15,
+      "dropout_probability": 0.05,
+      "false_positive_rate_hz": 0.05
+    }
+  },
+  "difficulty": {
+    "level": "D",
+    "guardrails": "off",
+    "perception_model": "tracked"
+  },
+  "reference": {
+    "commands": [
+      "WAIT",
+      "OVERTAKE",
+      "PEEK_OUT",
+      "TURN_AROUND",
+      "REPLAN_ROUTE"
+    ],
+    "sequence": [
+      [
+        "TURN_AROUND"
+      ]
+    ],
+    "outcome": "rerouted",
+    "budget_eur": 220.0,
+    "reason": "Vorn ist alles gesperrt, und von hinten kommt bald Verkehr: sofort nachsehen und wenden, solange Platz ist."
+  }
+}

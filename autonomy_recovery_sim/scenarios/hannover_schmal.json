@@ -1,0 +1,19 @@
+{
+  "id": "hannover_schmal",
+  "seed": 48,
+  "simulation": {"duration_s": 30.0, "dt_s": 0.1},
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 2.0,
+    "center_marking": "dashed",
+    "assumption_note": "Künstlich verengte Fahrbahn als Grenzfall."
+  },
+  "ego": {"start_s_m": 20.0, "lane_d_m": -1.0, "target_s_m": 180.0, "cruise_speed_mps": 8.0},
+  "actors": [
+    {"id": "blocker", "kind": "car", "s_m": 92.0, "d_m": -1.0, "speed_mps": 0.0, "direction": 1, "description": "Ein stehender Pkw blockiert die kuenstlich verengte eigene Fahrspur."}
+  ],
+  "policy": {"minimum_passing_clearance_m": 0.5, "allow_shoulder_passing": false},
+  "recovery": {"stuck_after_s": 3.0},
+  "reference": {"command": "WAIT", "reason": "Der seitliche Sicherheitsabstand reicht nicht aus."}
+}

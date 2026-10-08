@@ -1,0 +1,252 @@
+{
+  "id": "hannover_fussball_abpfiff",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 160.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_robert_enke_strasse.geojson",
+    "context_file": "../data/hannover_robert_enke_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Route: Robert-Enke-Strasse (OSM-Ways 27095856, 1540868152, 681074694) nordlich der Heinz-von-Heiden-Arena. Spurbreite und Markierung sind Szenarioannahmen; die Fussgaengerstroeme sind erfunden."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 320.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "fans-1",
+      "kind": "pedestrian",
+      "s_m": 194.0,
+      "d_m": 9.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 12.0,
+      "target_speed_mps": 0.6,
+      "exit_d_m": -9.0,
+      "description": "Eine kleine Gruppe von Stadionbesuchern befindet sich am Fahrbahnrand und blickt in Richtung der gegenueberliegenden Strassenseite."
+    },
+    {
+      "id": "fans-2",
+      "kind": "pedestrian",
+      "s_m": 196.4,
+      "d_m": 9.4,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 13.5,
+      "target_speed_mps": 0.7,
+      "exit_d_m": -9.0,
+      "description": "Eine kleine Gruppe von Stadionbesuchern befindet sich am Fahrbahnrand und blickt in Richtung der gegenueberliegenden Strassenseite."
+    },
+    {
+      "id": "fans-3",
+      "kind": "pedestrian",
+      "s_m": 198.8,
+      "d_m": 9.8,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 15.0,
+      "target_speed_mps": 0.8,
+      "exit_d_m": -9.0,
+      "description": "Eine kleine Gruppe von Stadionbesuchern befindet sich am Fahrbahnrand und blickt in Richtung der gegenueberliegenden Strassenseite."
+    },
+    {
+      "id": "fans-4",
+      "kind": "pedestrian",
+      "s_m": 201.2,
+      "d_m": 9.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 16.5,
+      "target_speed_mps": 0.6,
+      "exit_d_m": -9.0,
+      "description": "Eine kleine Gruppe von Stadionbesuchern befindet sich am Fahrbahnrand und blickt in Richtung der gegenueberliegenden Strassenseite."
+    },
+    {
+      "id": "fans-5",
+      "kind": "pedestrian",
+      "s_m": 203.6,
+      "d_m": 9.4,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 18.0,
+      "target_speed_mps": 0.7,
+      "exit_d_m": -9.0,
+      "description": "Eine kleine Gruppe von Stadionbesuchern befindet sich am Fahrbahnrand und blickt in Richtung der gegenueberliegenden Strassenseite."
+    },
+    {
+      "id": "fans-6",
+      "kind": "pedestrian",
+      "s_m": 206.0,
+      "d_m": 9.8,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 19.5,
+      "target_speed_mps": 0.8,
+      "exit_d_m": -9.0,
+      "description": "Weitere Personen in Fanbekleidung stehen dicht beieinander am Fahrbahnrand."
+    },
+    {
+      "id": "fans-7",
+      "kind": "pedestrian",
+      "s_m": 208.4,
+      "d_m": 9.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 21.0,
+      "target_speed_mps": 0.6,
+      "exit_d_m": -9.0,
+      "description": "Weitere Personen in Fanbekleidung stehen dicht beieinander am Fahrbahnrand."
+    },
+    {
+      "id": "fans-8",
+      "kind": "pedestrian",
+      "s_m": 210.8,
+      "d_m": 9.4,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 22.5,
+      "target_speed_mps": 0.7,
+      "exit_d_m": -9.0,
+      "description": "Weitere Personen in Fanbekleidung stehen dicht beieinander am Fahrbahnrand."
+    },
+    {
+      "id": "fans-9",
+      "kind": "pedestrian",
+      "s_m": 213.2,
+      "d_m": 9.8,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 24.0,
+      "target_speed_mps": 0.8,
+      "exit_d_m": -9.0,
+      "description": "Weitere Personen in Fanbekleidung stehen dicht beieinander am Fahrbahnrand."
+    },
+    {
+      "id": "fans-10",
+      "kind": "pedestrian",
+      "s_m": 215.6,
+      "d_m": 9.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 25.5,
+      "target_speed_mps": 0.6,
+      "exit_d_m": -9.0,
+      "description": "Weitere Personen in Fanbekleidung stehen dicht beieinander am Fahrbahnrand."
+    },
+    {
+      "id": "fans-11",
+      "kind": "pedestrian",
+      "s_m": 218.0,
+      "d_m": 9.4,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 40.0,
+      "target_speed_mps": 0.7,
+      "exit_d_m": -9.0,
+      "description": "Nachfolgende Stadionbesucher warten in einer lockeren Gruppe neben der Fahrbahn."
+    },
+    {
+      "id": "fans-12",
+      "kind": "pedestrian",
+      "s_m": 220.4,
+      "d_m": 9.8,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 48.0,
+      "target_speed_mps": 0.8,
+      "exit_d_m": -9.0,
+      "description": "Nachfolgende Stadionbesucher warten in einer lockeren Gruppe neben der Fahrbahn."
+    },
+    {
+      "id": "fans-13",
+      "kind": "pedestrian",
+      "s_m": 222.8,
+      "d_m": 9.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 56.0,
+      "target_speed_mps": 0.6,
+      "exit_d_m": -9.0,
+      "description": "Nachfolgende Stadionbesucher warten in einer lockeren Gruppe neben der Fahrbahn."
+    },
+    {
+      "id": "fans-14",
+      "kind": "pedestrian",
+      "s_m": 225.2,
+      "d_m": 9.4,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.5,
+      "width_m": 3.0,
+      "behavior": "crossing",
+      "motion_start_time_s": 64.0,
+      "target_speed_mps": 0.7,
+      "exit_d_m": -9.0,
+      "description": "Nachfolgende Stadionbesucher warten in einer lockeren Gruppe neben der Fahrbahn."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "WAIT"
+    ],
+    "outcome": "resolved",
+    "budget_eur": 35.0,
+    "reason": "Abpfiff bei Hannover 96: Fussgaengergruppen queren nacheinander die Robert-Enke-Strasse. Vulnerable Road Users haben Vorrang, Warten ist richtig; die Leitstelle kann keine Menschenmenge raeumen."
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 15.0,
+    "clears": []
+  }
+}

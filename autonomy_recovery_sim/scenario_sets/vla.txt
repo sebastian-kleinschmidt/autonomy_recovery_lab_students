@@ -1,0 +1,4 @@
+# VLA-Fahrstack-Mock (an NVIDIA Alpamayo 1.5 angelehnt): Selbstauskunft des Fahrstacks pruefen
+../scenarios/hannover_vla_phantom.json
+../scenarios/hannover_vla_ampel_dunkel.json
+../scenarios/hannover_vla_karton.json

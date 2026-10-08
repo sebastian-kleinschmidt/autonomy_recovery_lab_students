@@ -1,0 +1,9 @@
+# Unsicherheit (Kategorie E), Werkzeugausfaelle und Manipulation (Kategorie H), Kontrollfall (J)
+../scenarios/hannover_phantom_hindernis.json
+../scenarios/hannover_veraltete_daten.json
+../scenarios/hannover_karte_veraltet.json
+../scenarios/hannover_lokalisierung_drift.json
+../scenarios/hannover_werkzeug_timeout.json
+../scenarios/hannover_werkzeugbudget_knapp.json
+../scenarios/hannover_injektion.json
+../scenarios/hannover_geplanter_halt.json

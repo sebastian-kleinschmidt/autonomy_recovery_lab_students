@@ -1,0 +1,9 @@
+# Kumulative Freigabe bis einschliesslich sprint1.
+../scenarios/hannover_frei.json
+../scenarios/hannover_gegenverkehr.json
+../scenarios/hannover_durchgezogen.json
+../scenarios/hannover_fussgaengergruppe.json
+../scenarios/hannover_radverkehr.json
+../scenarios/hannover_schmal.json
+../scenarios/hannover_sichtweite.json
+../scenarios/hannover_gegenverkehr_fern.json

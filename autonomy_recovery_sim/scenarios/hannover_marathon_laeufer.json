@@ -1,0 +1,239 @@
+{
+  "id": "hannover_marathon_laeufer",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 140.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_culemannstrasse.geojson",
+    "context_file": "../data/hannover_culemann_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Route: Culemannstrasse (OSM-Ways 1089017428, 59322751, 1089017427) in der Innenstadt. Spurbreite und Markierung sind Szenarioannahmen. Die Marathon-Sperrung steht nicht in OSM, sie ist eine Szenarioannahme."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 420.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "runners-1",
+      "kind": "pedestrian",
+      "s_m": 246.0,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 14.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine kleine Gruppe von Laufenden in Sportkleidung befindet sich seitlich an der abgesperrten Laufstrecke."
+    },
+    {
+      "id": "runners-2",
+      "kind": "pedestrian",
+      "s_m": 247.5,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 18.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine kleine Gruppe von Laufenden in Sportkleidung befindet sich seitlich an der abgesperrten Laufstrecke."
+    },
+    {
+      "id": "runners-3",
+      "kind": "pedestrian",
+      "s_m": 249.0,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 22.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine kleine Gruppe von Laufenden in Sportkleidung befindet sich seitlich an der abgesperrten Laufstrecke."
+    },
+    {
+      "id": "runners-4",
+      "kind": "pedestrian",
+      "s_m": 250.5,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 26.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine kleine Gruppe von Laufenden in Sportkleidung befindet sich seitlich an der abgesperrten Laufstrecke."
+    },
+    {
+      "id": "runners-5",
+      "kind": "pedestrian",
+      "s_m": 246.0,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 30.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Weitere Teilnehmende des Laufs naehern sich seitlich dem Fahrbahnbereich."
+    },
+    {
+      "id": "runners-6",
+      "kind": "pedestrian",
+      "s_m": 247.5,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 34.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Weitere Teilnehmende des Laufs naehern sich seitlich dem Fahrbahnbereich."
+    },
+    {
+      "id": "runners-7",
+      "kind": "pedestrian",
+      "s_m": 249.0,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 38.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Weitere Teilnehmende des Laufs naehern sich seitlich dem Fahrbahnbereich."
+    },
+    {
+      "id": "runners-8",
+      "kind": "pedestrian",
+      "s_m": 250.5,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 42.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Weitere Teilnehmende des Laufs naehern sich seitlich dem Fahrbahnbereich."
+    },
+    {
+      "id": "runners-9",
+      "kind": "pedestrian",
+      "s_m": 246.0,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 46.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine nachfolgende Gruppe von Laufenden ist am Rand der gesperrten Strecke sichtbar."
+    },
+    {
+      "id": "runners-10",
+      "kind": "pedestrian",
+      "s_m": 247.5,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 50.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine nachfolgende Gruppe von Laufenden ist am Rand der gesperrten Strecke sichtbar."
+    },
+    {
+      "id": "runners-11",
+      "kind": "pedestrian",
+      "s_m": 249.0,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 54.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine nachfolgende Gruppe von Laufenden ist am Rand der gesperrten Strecke sichtbar."
+    },
+    {
+      "id": "runners-12",
+      "kind": "pedestrian",
+      "s_m": 250.5,
+      "d_m": 11.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.5,
+      "behavior": "crossing",
+      "motion_start_time_s": 58.0,
+      "target_speed_mps": 3.5,
+      "exit_d_m": -11.0,
+      "description": "Eine nachfolgende Gruppe von Laufenden ist am Rand der gesperrten Strecke sichtbar."
+    },
+    {
+      "id": "marshal",
+      "kind": "pedestrian",
+      "s_m": 228.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 0.6,
+      "width_m": 0.6,
+      "behavior": "crossing",
+      "motion_start_time_s": 75.0,
+      "target_speed_mps": 1.0,
+      "exit_d_m": -8.0,
+      "description": "Streckenposten steht in der Fahrspur, hebt die Hand und gestikuliert. Die Bedeutung der Geste ist nicht eindeutig."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "WAIT"
+    ],
+    "outcome": "resolved",
+    "budget_eur": 30.0,
+    "reason": "Hannover-Marathon: Ein Laeuferstrom quert, ein Streckenposten steht mit uneindeutiger Geste in der Spur. Vulnerable Road Users haben Vorrang; Warten ist billiger als ein Anruf, der ohnehin nichts beschleunigt."
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 15.0,
+    "clears": [
+      "marshal"
+    ]
+  }
+}

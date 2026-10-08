@@ -1,0 +1,4 @@
+# Neue Szenarien in bootcamp; nicht kumulativ.
+../scenarios/hannover_frei.json
+../scenarios/hannover_gegenverkehr.json
+../scenarios/hannover_durchgezogen.json

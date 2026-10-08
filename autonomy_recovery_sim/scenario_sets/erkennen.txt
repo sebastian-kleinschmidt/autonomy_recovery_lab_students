@@ -1,0 +1,8 @@
+# Erst erkennen, ob das Fahrzeug wirklich festhaengt: Kontrollfaelle (regulaerer Halt, Stau)
+# und ihre Gegenstuecke (ausgefallenes Signal, gruene Ampel mit echter Blockade).
+../scenarios/hannover_ampel_rot.json
+../scenarios/hannover_gueterzug.json
+../scenarios/hannover_stau_loest_sich.json
+../scenarios/hannover_geplanter_halt.json
+../scenarios/hannover_ampel_ausgefallen.json
+../scenarios/hannover_ampel_gruen_blockiert.json

@@ -1,0 +1,60 @@
+{
+  "id": "hannover_marathon_sperrung",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 90.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_culemannstrasse.geojson",
+    "context_file": "../data/hannover_culemann_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Route: Culemannstrasse (OSM-Ways 1089017428, 59322751, 1089017427) in der Innenstadt. Spurbreite und Markierung sind Szenarioannahmen. Die Marathon-Sperrung steht nicht in OSM, sie ist eine Szenarioannahme."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 420.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "marathon_barrier",
+      "kind": "barrier",
+      "s_m": 240.0,
+      "d_m": 0.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 0.6,
+      "width_m": 10.0,
+      "description": "Schild an der Absperrung: Hannover-Marathon, Vollsperrung bis 15 Uhr. Umleitung ausgeschildert."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "REQUEST_ADDITIONAL_INFORMATION",
+      "REPLAN_ROUTE"
+    ],
+    "outcome": "rerouted",
+    "budget_eur": 160.0,
+    "reason": "Hannover-Marathon: Die Culemannstrasse ist voll gesperrt, die Karte kennt die Veranstaltungssperrung nicht. Kartenabgleich, dann Umleitung. Die Leitstelle kann keine Absperrung entfernen."
+  },
+  "route": {
+    "blocked": true,
+    "map_stale": true,
+    "alternative_available": true,
+    "detour_cost_s": 240.0
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 15.0,
+    "clears": []
+  }
+}

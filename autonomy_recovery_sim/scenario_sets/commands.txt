@@ -1,0 +1,16 @@
+# Ein Fall je High-Level-Befehl plus schwierigere Kosten-Abwaegungen; Erwartung siehe reference.command.
+../scenarios/hannover_fussgaengergruppe.json
+../scenarios/hannover_baustelle_umleitung.json
+../scenarios/hannover_sackgasse.json
+../scenarios/hannover_muelltonne.json
+../scenarios/hannover_ladung_karton.json
+../scenarios/hannover_doppelparker.json
+../scenarios/hannover_leitstelle.json
+../scenarios/hannover_freie_fahrt.json
+../scenarios/hannover_bake_durchgezogen.json
+../scenarios/hannover_objekt_falsch_abgestellt.json
+../scenarios/hannover_doppelparker_belegt.json
+../scenarios/hannover_lieferwagen_faehrt_los.json
+../scenarios/hannover_passagier_absetzen.json
+../scenarios/hannover_ziel_gesperrt.json
+../scenarios/hannover_leitstelle_offline.json

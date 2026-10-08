@@ -1,0 +1,83 @@
+{
+  "id": "hannover_sitzblockade",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 160.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_culemannstrasse.geojson",
+    "context_file": "../data/hannover_culemann_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Die Sitzblockade ist eine Szenarioannahme. Die Simulation bewertet ausschliesslich die sichere Fahrzeugreaktion, nicht Anliegen oder Rechtmaessigkeit der Versammlung."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 420.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "sitzblockade-1",
+      "kind": "pedestrian",
+      "s_m": 238.0,
+      "d_m": -2.2,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.0,
+      "width_m": 1.0,
+      "behavior": "parked",
+      "description": "Mehrere Personen sitzen eng beieinander auf der Fahrbahn."
+    },
+    {
+      "id": "sitzblockade-2",
+      "kind": "pedestrian",
+      "s_m": 238.0,
+      "d_m": 0.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.0,
+      "width_m": 1.0,
+      "behavior": "parked",
+      "description": "Eine weitere Person sitzt auf der Fahrbahn nahe der Mittellinie und bleibt unbewegt."
+    },
+    {
+      "id": "sitzblockade-3",
+      "kind": "pedestrian",
+      "s_m": 238.0,
+      "d_m": 2.2,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.0,
+      "width_m": 1.0,
+      "behavior": "parked",
+      "description": "Eine Person sitzt auf der Gegenfahrbahn und vervollstaendigt die Blockade ueber beide Fahrtrichtungen."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "WAIT",
+      "REQUEST_REMOTE_ASSISTANCE"
+    ],
+    "outcome": "remote_resolved",
+    "budget_eur": 70.0,
+    "reason": "Personen blockieren beide Fahrtrichtungen. Ein Fahrmanoever durch oder dicht an der Gruppe ist ausgeschlossen; nach begrenztem Warten koordiniert die Leitstelle die externe Raeumung."
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 25.0,
+    "clears": [
+      "sitzblockade-1",
+      "sitzblockade-2",
+      "sitzblockade-3"
+    ]
+  }
+}

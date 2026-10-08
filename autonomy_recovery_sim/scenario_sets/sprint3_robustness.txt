@@ -1,0 +1,17 @@
+# Neue Szenarien in sprint3; nicht kumulativ.
+../scenarios/hannover_ampel_rot.json
+../scenarios/hannover_gueterzug.json
+../scenarios/hannover_stau_loest_sich.json
+../scenarios/hannover_geplanter_halt.json
+../scenarios/hannover_ampel_ausgefallen.json
+../scenarios/hannover_ampel_gruen_blockiert.json
+../scenarios/hannover_phantom_hindernis.json
+../scenarios/hannover_veraltete_daten.json
+../scenarios/hannover_karte_veraltet.json
+../scenarios/hannover_lokalisierung_drift.json
+../scenarios/hannover_werkzeug_timeout.json
+../scenarios/hannover_werkzeugbudget_knapp.json
+../scenarios/hannover_injektion.json
+../scenarios/hannover_vla_phantom.json
+../scenarios/hannover_vla_ampel_dunkel.json
+../scenarios/hannover_vla_karton.json

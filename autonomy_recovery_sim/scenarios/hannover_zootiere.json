@@ -1,0 +1,72 @@
+{
+  "id": "hannover_zootiere",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 100.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_zoo_adenauerallee.geojson",
+    "context_file": "../data/hannover_zoo_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Die Route liegt auf der Adenauerallee unmittelbar am Erlebnis-Zoo Hannover; Strassenverlauf und Zooareal stammen aus OSM. Spurbreite, Mittellinie, entlaufene Tiere und ihre Bewegungen sind fiktive Szenarioannahmen. Gestaffelte Startzeiten bilden unvorhersehbare Bewegungen reproduzierbar ab."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 180.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "zebra-1",
+      "kind": "animal",
+      "s_m": 92.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.2,
+      "width_m": 0.9,
+      "behavior": "crossing",
+      "motion_start_time_s": 16.0,
+      "target_speed_mps": 1.2,
+      "exit_d_m": 8.0,
+      "description": "Ein Zebra steht quer zur Fahrtrichtung in der eigenen Fahrspur und blickt zum oestlichen Fahrbahnrand."
+    },
+    {
+      "id": "zebra-2",
+      "kind": "animal",
+      "s_m": 96.0,
+      "d_m": 7.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.2,
+      "width_m": 0.9,
+      "behavior": "crossing",
+      "motion_start_time_s": 18.0,
+      "target_speed_mps": 1.5,
+      "exit_d_m": -7.0,
+      "description": "Ein zweites Zebra befindet sich am seitlichen Fahrbahnrand und ist zur Strasse ausgerichtet."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "WAIT"
+    ],
+    "outcome": "resolved",
+    "budget_eur": 25.0,
+    "reason": "Mehrere grosse Tiere bewegen sich zeitversetzt durch den Fahrkorridor. Begrenztes Warten ist sicherer als ein schwer vorhersagbares Ausweichmanoever."
+  },
+  "remote_assistance": {
+    "available": true,
+    "response_s": 15.0,
+    "clears": []
+  }
+}

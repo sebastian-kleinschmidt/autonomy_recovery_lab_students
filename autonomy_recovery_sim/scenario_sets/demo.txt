@@ -1,0 +1,4 @@
+# Drei erklaerte Einstiegsfaelle
+../scenarios/hannover_frei.json
+../scenarios/hannover_gegenverkehr.json
+../scenarios/hannover_durchgezogen.json

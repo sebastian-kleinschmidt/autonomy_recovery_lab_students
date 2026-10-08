@@ -1,0 +1,10 @@
+# Mehrstufige Loesungswege (reference.sequence): erst die ersten vier, dann die neuen Faelle
+../scenarios/hannover_sackgasse.json
+../scenarios/hannover_karte_veraltet.json
+../scenarios/hannover_passagier_absetzen.json
+../scenarios/hannover_leitstelle_offline.json
+../scenarios/hannover_fussgaenger_vor_lieferwagen.json
+../scenarios/hannover_gegenverkehr_zieht_vorbei.json
+../scenarios/hannover_zwei_hindernisse.json
+../scenarios/hannover_karte_veraltet_fahrgaeste.json
+../scenarios/hannover_ampel_dunkel_lieferwagen.json

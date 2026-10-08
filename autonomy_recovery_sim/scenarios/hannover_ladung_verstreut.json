@@ -1,0 +1,64 @@
+{
+  "id": "hannover_ladung_verstreut",
+  "seed": 42,
+  "simulation": {"duration_s": 90.0, "dt_s": 0.1},
+  "road": {
+    "map_file": "../data/hannover_robert_enke_strasse.geojson",
+    "context_file": "../data/hannover_robert_enke_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Die verstreute Mischladung ist eine fiktive Szenarioannahme."
+  },
+  "ego": {"start_s_m": 100.0, "lane_d_m": -1.75, "target_s_m": 330.0, "cruise_speed_mps": 8.0},
+  "actors": [
+    {
+      "id": "palette-quer",
+      "kind": "debris",
+      "s_m": 194.0,
+      "d_m": 0.0,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 1.2,
+      "width_m": 7.5,
+      "behavior": "parked",
+      "description": "Eine zerbrochene Palette liegt quer ueber beide Fahrtrichtungen; mehrere Teile ragen nach oben.",
+      "obstacle_profile": {
+        "height_m": 0.35,
+        "material": "WOOD",
+        "deformability": "LOW",
+        "sharp_edges": true,
+        "liquid": false,
+        "assessment_confidence": 0.97
+      }
+    },
+    {
+      "id": "metallteile",
+      "kind": "debris",
+      "s_m": 199.0,
+      "d_m": -1.5,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 2.0,
+      "width_m": 2.2,
+      "behavior": "parked",
+      "description": "Mehrere unregelmaessige Metallteile liegen hinter der Palette in der eigenen Fahrspur.",
+      "obstacle_profile": {
+        "height_m": 0.28,
+        "material": "METAL",
+        "deformability": "LOW",
+        "sharp_edges": true,
+        "liquid": false,
+        "assessment_confidence": 0.92
+      }
+    }
+  ],
+  "route": {"blocked": true, "alternative_available": true, "detour_cost_s": 220.0},
+  "recovery": {"stuck_after_s": 3.0},
+  "policy": {"allow_solid_exception": false},
+  "reference": {
+    "commands": ["REPLAN_ROUTE"],
+    "outcome": "rerouted",
+    "budget_eur": 170.0,
+    "reason": "Starre, scharfkantige Mischladung blockiert beide Fahrtrichtungen. Weder Ueberrollen noch lokales Umfahren besitzt einen sicheren Korridor."
+  }
+}

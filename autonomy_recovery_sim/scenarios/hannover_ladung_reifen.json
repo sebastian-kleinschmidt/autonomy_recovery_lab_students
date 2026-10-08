@@ -1,0 +1,43 @@
+{
+  "id": "hannover_ladung_reifen",
+  "seed": 42,
+  "simulation": {"duration_s": 55.0, "dt_s": 0.1},
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Der verlorene Reifen und seine Position sind eine fiktive Szenarioannahme."
+  },
+  "ego": {"start_s_m": 20.0, "lane_d_m": -1.75, "target_s_m": 180.0, "cruise_speed_mps": 8.0},
+  "actors": [
+    {
+      "id": "verlorener-reifen",
+      "kind": "debris",
+      "s_m": 92.0,
+      "d_m": -2.85,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 0.75,
+      "width_m": 0.75,
+      "behavior": "parked",
+      "description": "Ein einzelner Fahrzeugreifen liegt nahe dem rechten Rand der eigenen Fahrspur.",
+      "obstacle_profile": {
+        "height_m": 0.65,
+        "material": "RUBBER",
+        "deformability": "LOW",
+        "sharp_edges": false,
+        "liquid": false,
+        "assessment_confidence": 0.97
+      }
+    }
+  ],
+  "recovery": {"stuck_after_s": 3.0},
+  "policy": {"allow_solid_exception": false},
+  "reference": {
+    "commands": ["AVOID_TEMPORARY_OBSTRUCTION"],
+    "outcome": "liberated",
+    "budget_eur": 40.0,
+    "reason": "Der Reifen ist zu hoch und zu wenig verformbar zum Ueberrollen, liegt aber seitlich und kann innerhalb der Fahrspur umfahren werden."
+  }
+}

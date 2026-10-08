@@ -1,0 +1,66 @@
+{
+  "id": "hannover_zwei_hindernisse",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 70.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Spurbreite und Markierung sind Szenarioannahmen; OSM enthält sie hier nicht."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 180.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "trash_bin",
+      "kind": "trash_bin",
+      "s_m": 70.0,
+      "d_m": -2.9,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "length_m": 0.8,
+      "width_m": 0.7,
+      "description": "Eine einzelne Muelltonne steht nahe dem rechten Rand der eigenen Fahrspur."
+    },
+    {
+      "id": "blocker",
+      "kind": "car",
+      "s_m": 135.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "behavior": "parked",
+      "description": "Weiter vorn steht ein Pkw regungslos in der eigenen Fahrspur; ein Grund fuer den Stillstand ist nicht erkennbar."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "AVOID_TEMPORARY_OBSTRUCTION"
+    ],
+    "sequence": [
+      [
+        "AVOID_TEMPORARY_OBSTRUCTION"
+      ],
+      [
+        "NUDGE_AROUND_OBSTACLE"
+      ]
+    ],
+    "outcome": "liberated",
+    "budget_eur": 30.0,
+    "reason": "Erst die Muelltonne innerhalb der Spur umfahren. Danach steht ein Pkw in der Spur: eine neue Lage, die einen anderen Befehl verlangt."
+  }
+}

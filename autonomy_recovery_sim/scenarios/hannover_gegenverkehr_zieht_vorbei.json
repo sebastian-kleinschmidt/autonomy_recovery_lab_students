@@ -1,0 +1,64 @@
+{
+  "id": "hannover_gegenverkehr_zieht_vorbei",
+  "seed": 42,
+  "simulation": {
+    "duration_s": 60.0,
+    "dt_s": 0.1
+  },
+  "road": {
+    "map_file": "../data/hannover_wilhelm_busch_strasse.geojson",
+    "context_file": "../data/hannover_wilhelm_busch_context.json",
+    "lane_width_m": 3.5,
+    "center_marking": "dashed",
+    "assumption_note": "Spurbreite und Markierung sind Szenarioannahmen; OSM enthält sie hier nicht."
+  },
+  "ego": {
+    "start_s_m": 20.0,
+    "lane_d_m": -1.75,
+    "target_s_m": 180.0,
+    "cruise_speed_mps": 8.0
+  },
+  "actors": [
+    {
+      "id": "blocker",
+      "kind": "car",
+      "s_m": 92.0,
+      "d_m": -1.75,
+      "speed_mps": 0.0,
+      "direction": 1,
+      "behavior": "parked",
+      "description": "Ein Pkw steht mit Warnblinker in der eigenen Fahrspur; der Fahrer ist nicht zu sehen."
+    },
+    {
+      "id": "oncoming",
+      "kind": "car",
+      "s_m": 175.0,
+      "d_m": 1.75,
+      "speed_mps": 5.0,
+      "direction": -1,
+      "description": "Ein einzelner Pkw naehert sich auf der Gegenfahrbahn; dahinter ist die Strasse frei."
+    }
+  ],
+  "recovery": {
+    "stuck_after_s": 3.0
+  },
+  "policy": {
+    "allow_solid_exception": false
+  },
+  "reference": {
+    "commands": [
+      "WAIT"
+    ],
+    "sequence": [
+      [
+        "WAIT"
+      ],
+      [
+        "NUDGE_AROUND_OBSTACLE"
+      ]
+    ],
+    "outcome": "liberated",
+    "budget_eur": 30.0,
+    "reason": "Der Gegenverkehr erreicht den Ausweichkorridor gleich: erst warten. Ist er vorbei, bleibt der stehende Pkw; jetzt ist Umfahren richtig, weiteres Warten waere teuer."
+  }
+}

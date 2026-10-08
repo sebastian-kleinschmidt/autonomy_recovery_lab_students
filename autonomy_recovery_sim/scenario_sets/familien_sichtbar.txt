@@ -1,0 +1,7 @@
+# Je Familie die sichtbare Variante (zum Entwickeln).
+../families/f1_muellabfuhr.json
+../families/f2_fahrer_weg.json
+../families/f3_pkw_kommt.json
+../families/f4_frueh_zu.json
+../families/f5_frei.json
+../families/f6_stau_loest_sich.json
