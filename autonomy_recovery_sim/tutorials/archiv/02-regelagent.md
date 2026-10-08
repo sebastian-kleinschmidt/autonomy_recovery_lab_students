@@ -58,7 +58,7 @@ Der Starter wartet immer. Erwartet: **2 von 3 Szenarien bestanden, Note C.** Öf
 `artifacts/autonomy-recovery-sim/batch/batch-report.html` und findet das Szenario, das er verfehlt.
 Warum besteht ein „nur wartender“ Agent zwei Szenarien?
 
-Auf der fuer Sprint 1 freigegebenen kumulativen Menge bekommt der Starter 6 von 8
+Auf der für Sprint 1 empfohlenen kumulativen Menge bekommt der Starter 6 von 8
 Faellen. Das ist euer Nullpunkt:
 
 ```bash
@@ -120,7 +120,7 @@ def decide(session: AgentSession):
     })
 ```
 
-Fahrt die drei Demo-Szenarien und danach die Sprint-1-Freigabe:
+Fahrt die drei Demo-Szenarien und danach die Sprint-1-Menge:
 
 ```bash
 python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/demo.txt --agent autonomy_recovery_sim.student_agent:decide
@@ -202,7 +202,7 @@ obwohl Warten reicht) und **verpasste Eingriffe** (gewartet, obwohl es nötig wa
 keinen Fehlalarm, verpasst aber beide echten Fälle.
 
 Schreibt zu jeder Erweiterung **vorher** auf, in welchem Szenario sie helfen soll, und
-prüft es danach. Arbeitet nur mit den bis dahin freigegebenen Szenarien; die
+prüft es danach. Beginnt mit den bis dahin empfohlenen Szenarien; die
 Beschreibung des erwarteten Verhaltens steht dort in `expected_reason`.
 
 ## Wo Regeln an ihre Grenzen stoßen

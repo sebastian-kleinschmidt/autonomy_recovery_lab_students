@@ -1,4 +1,4 @@
-# Je Familie die sichtbare Variante (zum Entwickeln).
+# Einstieg: je Familie eine Variante; alle 18 sind in familien_alle.txt veröffentlicht.
 ../families/f1_muellabfuhr.json
 ../families/f2_fahrer_weg.json
 ../families/f3_pkw_kommt.json

@@ -3,7 +3,7 @@
 Der Prüfstand fährt euren Agenten nacheinander durch eine Menge von Szenarien und schreibt einen
 Bericht, der für jeden Fall sagt, **ob** er bestanden ist und **warum nicht**, und der zeigt,
 **ob** sich euer Agent seit dem letzten Lauf verbessert hat. Er ist derselbe Batchlauf wie der
-Abschlusslauf auf den verdeckten Fällen. Alle Befehle gelten aus dem
+Abschlusslauf mit weiteren Seeds der veröffentlichten Fälle. Alle Befehle gelten aus dem
 Repository-Wurzelverzeichnis.
 
 ## Der Grundbefehl
@@ -42,14 +42,14 @@ auch in einem eigenen Test oder einer CI-Pipeline verwenden.
 | Option | Bedeutung | Beispiel |
 |---|---|---|
 | `--agent` | `baseline`, `llm`, `none` oder `modul:funktion` | `--agent mein_agent:decide` |
-| `--release` | alle bis zu dieser Stufe freigegebenen Fälle: `bootcamp`, `sprint1` … `sprint4`, `all` | `--release sprint2` |
+| `--release` | alle bis zu dieser Stufe empfohlenen Sprintfälle: `bootcamp`, `sprint1` … `sprint4`, `all` | `--release sprint2` |
 | Quelle (statt `--release`) | ein Szenario, ein Ordner oder eine Set-Datei | `autonomy_recovery_sim/scenario_sets/vla.txt` |
 | `--repeats` | Läufe je Szenario; bei Sprachmodellen mindestens 3 | `--repeats 3` |
 | `--output` | Zielordner, je Experiment ein eigener | `--output artifacts/loop/e1` |
 | `--vla` | alle Szenarien mit VLA-Fahrstack: Objektklassen, Profile und Signalzustände nur als Modelltext | Vergleich „strukturiert gegen VLA“ |
 | `--perception` | Wahrnehmungsmodell erzwingen: `exact` oder `tracked` (Objektliste mit Messunsicherheit) | `--perception tracked` |
 | `--guardrails` | Prüfmodus erzwingen: `strict`, `advisory` oder `off` | `--guardrails off` |
-| `--hide-reference` | keine Referenzbefehle und -begründungen in den Berichten | für den Abschlusslauf auf verdeckten Fällen |
+| `--hide-reference` | keine Referenzbefehle und -begründungen in den Berichten | optional für einen Versuch ohne Referenzanzeige |
 
 Die Agenten im Repository:
 
@@ -155,4 +155,17 @@ python3 -m autonomy_recovery_sim.tutorials.vergleich artifacts/loop/e0 artifacts
 Die Ausgabe stellt Einstufung, Bestehensquote, Kosten, Werkzeugaufrufe, Tokens und Latenz nebeneinander
 und listet die Szenarien, deren Ergebnis sich geändert hat. Bei Sprachmodellen gilt ein
 Unterschied erst, wenn er größer ist als die Streuung über `--repeats`.
+
+## Robustheit mit weiteren Seeds prüfen
+
+Alle 61 Sprintfälle und alle 18 Familienvarianten samt Erfolgskriterien sind zugänglich.
+Beginnt bei den Familien mit `familien_sichtbar.txt` (sechs Einstiegsfälle) und prüft danach
+`familien_alle.txt` (alle 18). Zusätzliche Seed-Variationen erzeugt
+[`scripts/make_variants.py`](scripts/make_variants.py); Befehle und Grenzen stehen im
+[Szenarienkatalog](SCENARIOS.md#robustheit-mit-seed-variationen).
+
+Legt Entwicklungs-Seeds im Versuchsplan fest, friert den Agenten ein und messt anschließend
+weitere Seeds. Jeder Seed bekommt eigene Varianten und Berichte; dokumentiert den Seed und
+prüft auffällige Referenzlabels am Trace. `--repeats` wiederholt denselben Szenario-Seed und
+misst bei einem Sprachmodell dessen Streuung.
 

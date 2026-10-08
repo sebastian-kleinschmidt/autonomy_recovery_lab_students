@@ -29,9 +29,10 @@ Die Zeiten sind **gemeinsame Teamzeit** für den Pflichtumfang, keine Zeit pro P
 Vertiefungen und die eigentliche Implementierung kommen zusätzlich innerhalb der
 Sprints hinzu.
 
-Die Szenarien werden passend dazu gestuft freigegeben. Nutzt am Sprintende jeweils
+Alle 61 Sprintfälle und alle 18 Familienvarianten sind von Anfang an zugänglich.
+Die Sprintzuordnung empfiehlt eine Bearbeitungsreihenfolge. Nutzt am Sprintende jeweils
 `released_sprint1.txt` bis `released_sprint4.txt` als kumulativen Regressionstest;
-Zuordnung und Freischaltkriterien stehen im [Szenarienkatalog](../SCENARIOS.md).
+Zuordnung und fachliche Checkpoints stehen im [Szenarienkatalog](../SCENARIOS.md).
 
 Welche Lernziele jede Stufe trägt und welches Ergebnis dazu gehört, zeigt die Zuordnung in der
 [Laboraufgabe](../ASSIGNMENT.md#lernziele).
@@ -161,8 +162,9 @@ in [COMMANDS.md](../COMMANDS.md).
 
 ## Regeln, damit die Messung etwas bedeutet
 
-- **Keine Szenario-IDs im Agenten.** Bewertet wird auch auf unbekannten Varianten
-  derselben Fälle. Ein Agent, der `if scenario == ...` enthält, fällt dort durch.
+- **Keine Entscheidungstabellen nach Szenario-ID.** Der Agent entscheidet anhand seiner
+  Beobachtungen. Prüft bekannte Falltypen mit mehreren Seeds; ein Seed allein verhindert
+  das Auswendiglernen von Szenario-IDs nicht.
 - **Schlüssel gehören nie ins Repository und nie in einen Chat.**
 - **Rohberichte nicht nachbearbeiten.** Alle Tabellen im Bericht müssen sich aus den
   unveränderten Läufen wiederherstellen lassen.

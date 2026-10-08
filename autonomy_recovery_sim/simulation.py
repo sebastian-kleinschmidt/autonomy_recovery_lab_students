@@ -12,7 +12,7 @@ from .models import Event
 from .scenario import Scenario, load_scenario
 
 
-# Felder, die die Referenzloesung verraten (verdeckte Prüffälle, ``--hide-reference``).
+# Felder, die die Referenzloesung anzeigen (Versuch ohne Referenzanzeige, ``--hide-reference``).
 REFERENCE_FIELDS = (
     "expected_commands",
     "expected_reason",

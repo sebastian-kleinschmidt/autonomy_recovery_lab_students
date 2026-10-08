@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import random
 import subprocess
 import sys
 import tempfile
@@ -14,6 +15,7 @@ from autonomy_recovery_sim.engine import SimulationEngine
 from autonomy_recovery_sim.grading import grade_summary
 from autonomy_recovery_sim.policy import heuristic_agent
 from autonomy_recovery_sim.scenario import load_scenario
+from autonomy_recovery_sim.scripts.make_variants import SHIFT_M, make_variant
 from autonomy_recovery_sim.simulation import run_scenario
 from tests.test_commands import command, run
 
@@ -238,6 +240,21 @@ class DetectionMetricTest(unittest.TestCase):
 
 
 class VariantGeneratorTest(unittest.TestCase):
+    def test_family_variations_keep_rear_traffic_behind_the_ego(self) -> None:
+        families = ROOT / "autonomy_recovery_sim/families"
+        for name in ("f4_frueh_zu", "f5_radfahrer_hinten"):
+            source = families / f"{name}.json"
+            original = json.loads(source.read_text("utf8"))
+            road_length = load_scenario(source).road.length_m
+            for seed in (1, 2, 3, 2026):
+                with self.subTest(name=name, seed=seed):
+                    variant = make_variant(original, source, families, random.Random(seed), 1, road_length)
+                    self.assertEqual(variant["reference"], original["reference"])
+                    for before, after in zip(original["actors"], variant["actors"]):
+                        self.assertLessEqual(abs(after["s_m"] - before["s_m"]), SHIFT_M + 0.01)
+                        if before["s_m"] < original["ego"]["start_s_m"]:
+                            self.assertLess(after["s_m"], variant["ego"]["start_s_m"])
+
     def test_variants_are_valid_deterministic_and_relabelled(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
             for directory in (first, second):
@@ -259,7 +276,7 @@ class VariantGeneratorTest(unittest.TestCase):
             self.assertEqual(changed["id"], "hannover_frei_v1")
             self.assertNotEqual(changed["actors"][0]["s_m"], original["actors"][0]["s_m"])
             self.assertEqual(changed["reference"], original["reference"])
-            result = run_batch(Path(first) / "hidden.txt", agent=heuristic_agent, agent_name="baseline")
+            result = run_batch(Path(first) / "variants.txt", agent=heuristic_agent, agent_name="baseline")
             self.assertEqual(result.to_dict()["summary"]["collision_count"], 0)
 
 

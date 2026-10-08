@@ -1,11 +1,13 @@
-# Szenarienkatalog und Sprint-Freigaben
+# Szenarienkatalog und empfohlener Lernpfad
 
 Der maschinenlesbare Katalog [`scenario_catalog.json`](scenario_catalog.json) ist die
 Quelle fuer die didaktische Staffelung. Alle Szenarien sind ohne Sprachmodell nutzbar:
 in der Recovery Console, mit dem Regelagenten oder mit einem deterministischen
 Testagenten. Ein LLM wird erst fuer den spaeteren Vergleich benoetigt.
+**Alle 61 Sprintfälle und alle 18 Familienvarianten sind von Anfang an veröffentlicht**,
+einschließlich ihrer Erfolgskriterien. Die Sprintzuordnung empfiehlt eine Reihenfolge.
 
-## Freigabemodell
+## Empfohlene Sprintmengen
 
 Die kleinen `sprint*.txt`-Dateien enthalten nur die **neu hinzukommenden** Faelle.
 Die `released_sprint*.txt`-Dateien sind kumulativ und eignen sich fuer den
@@ -19,11 +21,12 @@ Regressionstest am Sprintende.
 | Sprint 3 | 16 | 36 | Scheindeadlocks, Datenqualitaet, Ausfaelle, Manipulation und VLA-Fahrstack | Fehlalarme und verpasste Eingriffe |
 | Sprint 4 | 25 | 61 | OSM-Transfer, Verdeckung, dynamischer Abbruch, Sonderlagen, Lost Cargo und mehrstufige Loesungswege | Robustheit und Regression |
 
-Die Freigabe erfolgt kohortenweit zu Beginn eines Sprints. Das Review des vorherigen
-Sprints ist ein fachlicher Checkpoint, aber keine individuelle Zugangsschranke. So
-bleiben Termine und Arbeitsbedingungen fuer alle Teams gleich.
+Die Mengen strukturieren den Lernpfad und sind keine Zugangsschranke. Teams können jederzeit
+andere Fälle untersuchen. Das Review des vorherigen Sprints ist ein fachlicher Checkpoint;
+es hilft bei der Entscheidung, was als Nächstes sinnvoll ist. Der Dateiname
+`released_sprintN.txt` bleibt für bestehende Befehle erhalten.
 
-Kalibrierung ohne LLM: Auf der Sprint-1-Freigabe besteht der absichtlich immer
+Kalibrierung ohne LLM: Auf der Sprint-1-Menge besteht der absichtlich immer
 wartende Starter 6/8 Faelle, die transparente Referenzbaseline 8/8; beide bleiben
 kollisionsfrei. Damit belohnt die erste Stufe bereits aktive, aber sichere
 Freigabeentscheidungen.
@@ -34,7 +37,7 @@ python3 -m autonomy_recovery_sim batch \
   autonomy_recovery_sim/scenario_sets/sprint2_decisions.txt \
   --agent autonomy_recovery_sim.student_agent:decide
 
-# Alle bis dahin freigegebenen Faelle als Regression
+# Alle bis dahin empfohlenen Faelle als Regression
 python3 -m autonomy_recovery_sim batch \
   autonomy_recovery_sim/scenario_sets/released_sprint2.txt \
   --agent autonomy_recovery_sim.student_agent:decide
@@ -59,7 +62,7 @@ Wahrnehmungswerkzeuge geben den Text als nicht vertrauenswuerdige
 ein optionales `describe_visible_scene` aus denselben Wahrnehmungsdaten aufgebaut
 werden, ohne verdeckte Ground-Truth-Akteure oder Loesungswissen offenzulegen.
 
-## Freischaltkriterien
+## Fachliche Checkpoints
 
 - **Sprint 1:** Die drei Bootcamp-Faelle wurden manuell untersucht; Werkzeuge und
   Ablehnungen koennen erklaert werden.
@@ -71,7 +74,9 @@ werden, ohne verdeckte Ground-Truth-Akteure oder Loesungswissen offenzulegen.
 - **Sprint 4:** Die Robustheitsmatrix unterscheidet Fehlalarm, verpassten Eingriff und
   unerwartetes Manoever; Verbesserungen bestehen den Regressionstest.
 - **Abschluss:** Agent, Prompt beziehungsweise Regelkonfiguration und Messpipeline
-  werden eingefroren. Erst dann laufen verdeckte Varianten mit mehreren Seeds.
+  werden eingefroren. Danach laufen Varianten der veröffentlichten Szenarien mit weiteren
+  Seeds. Ausgangsfälle, Generator und Erfolgskriterien sind bekannt; Seeds und Rohberichte
+  werden für die Reproduktion dokumentiert.
 
 ## Neue Sonderlagen
 
@@ -186,9 +191,13 @@ Wahrnehmungsmodell `tracked`; die Stufe legt Prüfmodus und Rauschen fest.
 | F5 Wende mit Tücken | D | Absperrung der eigenen Spur | frei · Radfahrer von hinten · Gegenverkehr (jeweils wenden, aber zur richtigen Zeit) | Wenden ist selbst riskant |
 | F6 Lage entspannt sich | B | stehende Fahrzeuge | Stau löst sich · Stau fährt an, sobald man ausschert (jeweils warten) · Panne (vorbeifahren) | Nicht übervorsichtig, aber vor dem Punkt ohne Rückkehr neu prüfen |
 
-Je Familie ist eine Variante sichtbar (`scenario_sets/familien_sichtbar.txt`, zum Entwickeln),
-die übrigen zwölf bleiben als verdeckte Prüffälle bis zum Abschluss bei den Lehrenden.
-
+Alle drei Varianten jeder Familie sind veröffentlicht, einschließlich ihrer Referenzbefehle
+und Erfolgskriterien. [`scenario_sets/familien_alle.txt`](scenario_sets/familien_alle.txt)
+enthält alle 18 Fälle. Die kleine Menge
+[`scenario_sets/familien_sichtbar.txt`](scenario_sets/familien_sichtbar.txt) enthält weiterhin
+je Familie einen empfohlenen Einstiegsfall; der Name ist historisch und bedeutet keine
+Zugriffsbeschränkung. Im Katalog markiert `introductory` diese sechs Fälle, `visible` ist
+für alle Varianten wahr. Die Dateien erzeugt [`scripts/build_families.py`](scripts/build_families.py).
 
 **Fairness:** Der Szenariolader prüft die drei Regeln für Auslöser (nichts aus dem Nichts, jede
 Überraschung hat einen Hinweis, plausibles Verhalten). Ein Referenzagent, der nur die
@@ -197,12 +206,35 @@ immer überholen 8, immer wenden 4 der 18 Varianten.
 
 ```bash
 python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/familien_sichtbar.txt --agent mein_agent:decide
+python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/familien_alle.txt --agent mein_agent:decide
 ```
 
-## Verdeckte Evaluation
+## Robustheit mit Seed-Variationen
 
-Die Sprint-Sets strukturieren die Lehre, sind aber keine Geheimhaltung: Wer das
-vollstaendige Lehrenden-Repository besitzt, kann alle Dateien lesen. Verdeckte
-Pruefvarianten werden deshalb separat mit `scripts/make_variants.py` erzeugt und
-nicht in den Studierenden-Checkout aufgenommen. Ihre Goldlabels und Rohberichte bleiben
-in der Pruefumgebung der Lehrenden.
+Alle Ausgangsfälle bleiben transparent. [`scripts/make_variants.py`](scripts/make_variants.py)
+erzeugt mit einem festen Seed reproduzierbare Varianten: Akteurpositionen werden um bis zu
+8 m verschoben, Geschwindigkeiten um bis zu 15 % und Bewegungsstartzeiten um bis zu 1,5 s
+verändert, jeweils innerhalb der Streckengrenzen. Zusätzlich wird der Wahrnehmungs-Seed
+gesetzt. Die inhaltliche Variante bleibt gleich: Ein anderer Seed macht aus einer
+Müllabfuhr keine Unfallstelle. Deshalb gehören alle drei Varianten zum veröffentlichten Katalog.
+
+```bash
+# Entwicklungsvarianten: gleicher Seed erzeugt dieselben Dateien
+python3 autonomy_recovery_sim/scripts/make_variants.py \
+  autonomy_recovery_sim/scenario_sets/familien_alle.txt \
+  --count 3 --seed 2026 --output artifacts/varianten/familien-seed-2026
+python3 -m autonomy_recovery_sim batch artifacts/varianten/familien-seed-2026/variants.txt \
+  --agent mein_agent:decide --output artifacts/experiments/familien-seed-2026
+```
+
+Messt ebenso die 61 Sprintfälle mit `released_sprint4.txt` als Quelle und verwendet für jeden
+Seed einen eigenen Ordner. Legt Entwicklungs-Seeds im Versuchsplan fest; nach dem Freeze
+folgen weitere Seeds, die ebenfalls dokumentiert werden. `--repeats` wiederholt denselben
+Fall und ersetzt keine Seed-Variation. Bei dynamischen Fällen können Verschiebungen die
+Plausibilität der Referenzlabels verändern; `--check` zeigt auffällige Baseline-Ergebnisse,
+die am Trace untersucht werden müssen. Ein Fehlschlag der Baseline beweist kein falsches Label.
+
+Der Agent entscheidet anhand seiner Beobachtungen. Szenario-IDs und Referenzlabels dürfen
+nicht als Entscheidungstabelle verwendet werden; ein neuer Seed verhindert solche
+Abkürzungen nicht zuverlässig. Mehrere Seeds prüfen Robustheit innerhalb der bekannten
+Falltypen und belegen keine Verallgemeinerung auf beliebige neue Situationen.

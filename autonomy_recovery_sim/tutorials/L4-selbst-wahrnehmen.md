@@ -62,7 +62,8 @@ verrauscht sind, oder gleich gut, weil das Rauschen klein ist?
    Sucht dort nach Hinweisen, dass das Hindernis von selbst weiterfährt (Fahrer am Steuer,
    Bote, Stau), und wartet dann.
 
-4. **Familien ansehen.** Fahrt die sechs sichtbaren Varianten der Szenariofamilien:
+4. **Familien ansehen.** Beginnt mit den sechs empfohlenen Einstiegsfällen der Szenariofamilien.
+   Alle 18 Varianten sind in `familien_alle.txt` zugänglich:
 
    ```bash
    python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/familien_sichtbar.txt --agent mein_agent:decide

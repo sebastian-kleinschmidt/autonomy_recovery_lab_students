@@ -293,10 +293,10 @@ Lauf im selben Ausgabeordner und schreibt neben `batch-report.md` die Auswertung
 (sinnvoll fuer LLM-Agenten); der Bericht zeigt dann Bestehensquote und
 Kostenstreuung. Details: [`COMMANDS.md`](COMMANDS.md#budget-einstufung-und-auswertungswebsite).
 Fuer Studierende erklaert [`PRUEFSTAND.md`](PRUEFSTAND.md) den Ablauf: `--release sprintN`
-waehlt die freigegebenen Faelle, jeder Fall bekommt einen Befund (warum er scheitert) und
+wählt die empfohlenen Sprintfälle, jeder Fall bekommt einen Befund (warum er scheitert) und
 eine Detailseite `scenarios/<id>/report.md` mit Befehlsfolge und Agent-Trace;
-`--hide-reference` entfernt Referenzloesungen aus Berichten und Rohdaten (Abschlusslauf auf
-verdeckten Faellen). Der
+`--hide-reference` entfernt Referenzlösungen aus Berichten und Rohdaten für einen
+optionalen Versuch ohne Referenzanzeige. Der
 Modelladapter protokolliert zusaetzlich Modellrunden, Latenz und die vom
 Endpunkt gemeldeten Tokenzahlen. Der
 vollstaendige `agent_trace` enthaelt Reihenfolge, Argumente und Ergebnisse aller
@@ -346,13 +346,15 @@ Faelle folgen dem Vertrag in
 [`schemas/scenario.schema.json`](schemas/scenario.schema.json) und koennen mit
 dem `validate`-Kommando vor dem Lauf geprueft werden.
 
-Fuer verdeckte Prueffaelle erzeugt
-[`scripts/make_variants.py`](scripts/make_variants.py) aus bekannten Szenarien
-reproduzierbar (Seed) Varianten mit verschobenen Aktorpositionen, veraenderten
-Geschwindigkeiten und Zeitpunkten. Mit `--check` laeuft die Baseline darueber; bei
-dynamischen Faellen muessen die Labels der gemeldeten Varianten von Lehrenden
-geprueft werden, weil verschobene Zeitpunkte die erwartete Situation aendern
-koennen. Die Ausgabe gehoert nicht in den Studierenden-Checkout.
+Alle 61 Sprintfälle und alle 18 Familienvarianten samt Erfolgskriterien sind von Anfang
+an zugänglich. Die Sprintmengen empfehlen eine Reihenfolge. Zur Robustheitsprüfung erzeugt
+[`scripts/make_variants.py`](scripts/make_variants.py) reproduzierbare Varianten mit
+verschobenen Akteurpositionen, veränderten Geschwindigkeiten und Zeitpunkten. Nutzt mehrere
+dokumentierte Entwicklungs-Seeds und nach dem Freeze weitere Seeds. Dateien und Berichte
+bleiben nachvollziehbar. Mit `--check` läuft die Baseline darüber; bei dynamischen Fällen
+müssen auffällige Referenzlabels anhand des Traces geprüft werden. Ein neuer Seed ändert
+keinen inhaltlichen Falltyp und verhindert keine Entscheidungstabelle nach Szenario-ID.
+Befehle stehen im [Szenarienkatalog](SCENARIOS.md#robustheit-mit-seed-variationen).
 
 ## Reales Kartenmaterial
 
@@ -638,13 +640,4 @@ nur `TURN_AROUND` fuehrt dorthin. Eine Absperrung (`kind: "barrier"`) darf nie u
 - die Referenzentscheidung ist eine Versuchspolitik, keine Rechtsauskunft
 - der VLA-Fahrstack ist ein regelbasierter Mock: keine Kamerabilder, kein Modell,
   Recovery-Befehle werden noch direkt ausgefuehrt statt als Anweisung an den Stack
-
-## Naechste Ausbaustufen
-
-1. Einen Durchlauf aus einem frischen Studierenden-Checkout mit dem Tutorial-Track durchfuehren
-   und die Zeitangaben der Lektionen anpassen.
-2. Die Richtwerte von L5 mit einem echten Modell messen (bisher nur Spielmodell).
-3. Echte Begruendungstexte eines VLA-Fahrstacks abspielen statt des regelbasierten Mocks.
-4. Weitere Szenariofamilien, etwa an Kreuzungen; die Engine kennt bisher nur eine Route.
-5. Weitere OSM-Strassen ueber einen reproduzierbaren Importer hinzufuegen.
 

@@ -39,8 +39,10 @@ Definiert vor dem nächsten Lauf:
 - mindestens drei Wiederholungen für Modellagenten,
 - Abbruch- und Ausschlusskriterien.
 
-Öffentliche Fälle dienen der Entwicklung. Verdeckte Prüffälle werden nicht zum
-Nachjustieren verwendet.
+Alle Ausgangsfälle und Erfolgskriterien sind öffentlich. Legt Entwicklungs-Seeds vorab
+fest und verwendet nach dem Freeze weitere Seeds für den Abschlussvergleich. Dokumentiert
+auch diese Seeds; die Abschlussläufe dienen nicht zum Nachjustieren derselben Agentenversion.
+So trennt ihr Entwicklung und Evaluation, ohne Szenariotypen zurückzuhalten.
 
 ## 4. Teamarbeit planen
 

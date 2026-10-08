@@ -31,7 +31,10 @@
 | veränderte Einflussgröße | |
 | Entwicklungsmenge | |
 | Evaluationsmenge | |
-| Wiederholungen | |
+| Entwicklungs-Seeds | |
+| weitere Seeds für den Abschluss nach dem Freeze | |
+| Variationsgenerator und Parameter (`--count`, `--seed`) | |
+| Modellwiederholungen (`--repeats`, gleicher Szenario-Seed) | |
 | primäre Sicherheitskennzahl | |
 | sekundäre Kennzahlen | |
 | Abbruch-/Ausschlusskriterien | |
@@ -61,6 +64,8 @@ Ausgangsbefehl:
 
 **Benennung der Rohberichte:** ____________________
 
+**Getrennte Ausgabeordner je Agent und Seed:** ____________________
+
 **Regel für Änderungen nach dem Freeze:** ____________________
 
 ## Freigabe
@@ -68,6 +73,7 @@ Ausgangsbefehl:
 - [ ] Forschungsfrage ist prüfbar.
 - [ ] Hypothese ist widerlegbar.
 - [ ] Entwicklung und Evaluation sind getrennt.
+- [ ] Alle Ausgangsszenarien sind bekannt; Entwicklungs- und Abschluss-Seeds werden dokumentiert.
 - [ ] Safety- und Leistungskennzahlen sind festgelegt.
 - [ ] Jede Implementierung hat eine andere Reviewperson.
 

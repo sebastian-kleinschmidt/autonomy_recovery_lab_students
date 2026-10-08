@@ -158,8 +158,8 @@ Nachweis für den Einsatz im realen Straßenverkehr.
 
 ## Versuchsmengen
 
-Die reguläre Freischaltung erfolgt kumulativ über die in
-[`SCENARIOS.md`](SCENARIOS.md) beschriebenen Sprint-Sets. Die folgenden thematischen
+Die empfohlene Bearbeitung folgt den in [`SCENARIOS.md`](SCENARIOS.md) beschriebenen
+kumulativen Sprintmengen. Die folgenden thematischen
 Mengen bleiben für Tutorials, Diagnose und spätere Querschnittsanalysen erhalten:
 
 - [`scenario_sets/demo.txt`](scenario_sets/demo.txt): drei erklärte Fälle,
@@ -177,18 +177,26 @@ Mengen bleiben für Tutorials, Diagnose und spätere Querschnittsanalysen erhalt
   irrt (ab Sprint 3),
 - [`scenario_sets/mehrstufig.txt`](scenario_sets/mehrstufig.txt): Fälle, die nur mit dem ganzen
   Lösungsweg bestehen (vollständig ab Sprint 4),
-- [`scenario_sets/familien_sichtbar.txt`](scenario_sets/familien_sichtbar.txt): je Familie eine
-  Variante zum Entwickeln (ab Sprint 3); die übrigen Varianten bleiben bis zum Abschluss verdeckt,
-- unbekannte Prüffälle: gleiche Schnittstelle, aber veränderte Geometrien, Geschwindigkeiten und
-  Zeitpunkte ([`scripts/make_variants.py`](scripts/make_variants.py)).
+- [`scenario_sets/familien_sichtbar.txt`](scenario_sets/familien_sichtbar.txt): je Familie ein
+  empfohlener Einstiegsfall (Sprint 3),
+- [`scenario_sets/familien_alle.txt`](scenario_sets/familien_alle.txt): alle 18 veröffentlichten
+  Familienvarianten zum Entwickeln und Vergleichen,
+- Seed-Variationen: gleiche Falltypen und Erfolgskriterien, aber veränderte Positionen,
+  Geschwindigkeiten und Zeitpunkte ([`scripts/make_variants.py`](scripts/make_variants.py)).
+
+Alle 61 Sprintfälle und alle 18 Familienvarianten sind von Anfang an zugänglich. Die
+Sprintmengen empfehlen eine Lernreihenfolge; ihr könnt jederzeit weitere Fälle untersuchen.
+Legt Entwicklungs-Seeds im Versuchsplan fest und prüft nach dem Freeze weitere Seeds.
+Dokumentiert alle verwendeten Seeds und Rohberichte, damit eure Ergebnisse reproduzierbar sind.
 
 Die Referenzbaseline ist ein Vergleichsmaßstab und löst bewusst nicht alle
 Fälle. Ein Szenario besteht nur innerhalb seines Kostenbudgets; der Batchbericht fasst das
 Ergebnis in einer Einstufung A bis D zusammen (siehe
 [`COMMANDS.md`](COMMANDS.md#budget-einstufung-und-auswertungswebsite)).
 
-Optimiert nicht auf Szenario-IDs oder erwartete Labels. Solche Abkürzungen
-werden durch die unbekannten Varianten nicht tragen.
+Entscheidet anhand der Werkzeugdaten, nicht anhand von Szenario-IDs oder Referenzlabels.
+Eine Entscheidungstabelle pro Szenario erfüllt die Aufgabe nicht; Seed-Variationen allein
+verhindern solche Abkürzungen nicht. Begründet im Review, welche Beobachtung eure Entscheidung trägt.
 
 ## Zu messen
 
@@ -229,7 +237,7 @@ Das Labor ist unbenotet. Am Ende steht einmal pro Team:
 5. ein Laborbericht mit Fragestellung, Methode, Ergebnissen, Fehleranalyse und Grenzen,
 6. der Vergleich von Teil A und Teil B mit Fehlalarm- und Verpasst-Quote und einer Analyse,
    welche Fälle das Modell besser oder schlechter löst als die Regeln allein und warum,
-7. eine kurze Demonstration an einem vorher nicht gezeigten Fall, an der alle Teammitglieder
+7. eine kurze Demonstration mit einer weiteren Seed-Variation eines veröffentlichten Falls, an der alle Teammitglieder
    fachlich beteiligt sind.
 
 API-Schlüssel, personenbezogene Daten und generierte Laufartefakte gehören
@@ -248,8 +256,9 @@ Ihr sollt jederzeit wissen, **wie gut** euer Ansatz funktioniert, **wo** er sche
 2. **In jeder Lektion:** Richtwerte zeigen, was ein gut gelöster Stand erreicht.
 3. **An jedem Team-Checkpoint:** Die Betreuung bespricht mit euch Ergebnis, Trace und
    Zusammenhänge; dabei kann jede Person zu jedem Teil befragt werden.
-4. **Zum Abschluss:** Ein Lauf auf den verdeckten Varianten zeigt, ob euer Agent
-   verallgemeinert oder nur die sichtbaren Fälle kennt.
+4. **Zum Abschluss:** Läufe mit weiteren Seeds zeigen, wie robust euer eingefrorener Agent
+   auf veränderte Bedingungen der bekannten Szenarien reagiert. Seeds und Ergebnisse bleiben
+   nachvollziehbar; daraus folgt keine Aussage über beliebige neue Falltypen.
 
 Die Einstufung A bis D ist eine Zusammenfassung, keine Note. Eine Kollision ergibt immer D:
 Sicherheit geht vor, und eine hohe Befreiungsrate gleicht einen Unfall nicht aus.

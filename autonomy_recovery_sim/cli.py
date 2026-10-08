@@ -81,7 +81,7 @@ def _batch_main(argv: list[str]) -> int:
     parser.add_argument(
         "--release",
         choices=[*RELEASE_SETS, "all"],
-        help="statt source: die bis zu dieser Stufe freigegebenen Szenarien (all = alle)",
+        help="statt source: die bis zu dieser Stufe empfohlenen Szenarien (all = alle Sprintfälle)",
     )
     parser.add_argument(
         "--vla",
@@ -101,7 +101,7 @@ def _batch_main(argv: list[str]) -> int:
     parser.add_argument(
         "--hide-reference",
         action="store_true",
-        help="Referenzbefehle und -begruendungen nicht in die Berichte schreiben (verdeckte Prüffälle)",
+        help="Referenzbefehle und -begruendungen nicht in die Berichte schreiben (Versuch ohne Referenzanzeige)",
     )
     parser.add_argument("--output", type=Path, default=Path("artifacts/autonomy-recovery-sim/batch"))
     parser.add_argument(

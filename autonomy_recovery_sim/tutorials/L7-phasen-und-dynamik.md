@@ -22,8 +22,9 @@ Manöver stehen in [COMMANDS.md](../COMMANDS.md#phasenmanoever-und-checkpoints).
 
 ## Vorhersage
 
-Ihr seht nur die sichtbare Variante jeder Familie. Bewertet wird auch auf den verdeckten. Was
-darf euer Agent deshalb **nicht** tun?
+Alle drei Varianten jeder Familie sind veröffentlicht. Vergleicht vor dem Lauf die
+Startbilder und sagt vorher, welche Beobachtung zu einer anderen Entscheidung führen muss.
+Warum reicht eine feste Antwort pro Familie nicht?
 
 ## Bauen
 
@@ -58,7 +59,9 @@ darf euer Agent deshalb **nicht** tun?
 ## Messen
 
 ```bash
+# Einstieg: sechs Fälle, danach alle 18 Varianten
 python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/familien_sichtbar.txt --agent mein_agent:decide
+python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/familien_alle.txt --agent mein_agent:decide
 python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/released_sprint2.txt --perception tracked --agent mein_agent:decide
 ```
 
@@ -69,11 +72,12 @@ python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/relea
 
 Der kleine Rückgang auf Sprint 2 ist der Preis der Vorsicht: Wer unklare Lagen erst
 anschaut, ist in einfachen Fällen manchmal langsamer. Ein guter Agent findet die Balance;
-bewertet wird auf den verdeckten Varianten.
+prüft anschließend alle 18 Varianten und zusätzliche Seeds. Die Richtwerte oben beziehen
+sich auf die sechs Einstiegsfälle, nicht auf den gesamten Familienkatalog.
 
 ## Was typischerweise schiefgeht
 
-- **Auf die sichtbare Variante zugeschnitten.** „Bei Transporter immer warten“ besteht
+- **Auf den Einstiegsfall zugeschnitten.** „Bei Transporter immer warten“ besteht
   `f1_muellabfuhr` und scheitert an der Unfallstelle.
 - **Am Checkpoint zu lange nachdenken.** Ein LLM am Checkpoint lässt den Gegenverkehr
   heranfahren.
@@ -93,6 +97,6 @@ bewertet wird auf den verdeckten Varianten.
 
 - Ihr könnt an einem Trace zeigen, was euer Agent am Checkpoint gesehen hat, das er vorher
   nicht sehen konnte.
-- Ihr habt begründet, warum euer Agent keine Szenario-IDs oder sichtbaren Varianten kennt.
+- Ihr habt begründet, warum euer Agent keine Szenario-IDs oder Referenzlabels für Entscheidungen verwendet.
 
 Weiter mit [L8 · Unfälle und eigene Schutzregeln](L8-unfaelle-und-schutzregeln.md).

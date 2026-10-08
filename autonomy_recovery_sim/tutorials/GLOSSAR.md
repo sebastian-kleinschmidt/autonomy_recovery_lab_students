@@ -136,8 +136,9 @@ der Lösung der vorigen Lektion.
 **Szenario.** Eine Ausgangslage mit Straße, Akteuren, Mission, Regeln und erwartetem
 Ergebnis (JSON in `autonomy_recovery_sim/scenarios/`).
 
-**Szenariofamilie.** Eine Lage (F1 bis F6) in drei Varianten: eine sichtbare zum Entwickeln
-(`familien_sichtbar.txt`), zwei verdeckte zum Prüfen.
+**Szenariofamilie.** Eine Lage (F1 bis F6) in drei veröffentlichten Varianten.
+`familien_sichtbar.txt` enthält sechs empfohlene Einstiegsfälle, `familien_alle.txt` alle 18.
+Weitere Seeds prüfen Robustheit bei veränderten konkreten Bedingungen.
 
 **Unfallabwicklung.** Was nach einem Aufprall zu tun ist: anhalten, `SECURE_SCENE`, dann
 `REPORT_INCIDENT`. Weiterfahren ohne Meldung zählt wie ein Personenschaden.

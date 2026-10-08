@@ -126,7 +126,7 @@ python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/demo.
 ```
 
 Bevor ihr eine Variante bewertet, fuehrt ihr sie zusaetzlich auf der bis Sprint 2
-freigegebenen Menge `released_sprint2.txt` aus. Falls noch kein Modellzugang vorhanden
+empfohlenen Menge `released_sprint2.txt` aus. Falls noch kein Modellzugang vorhanden
 ist, prueft `tutorials.mock_llm_demo` den Nachrichten- und Werkzeugloop ohne Schluessel;
 Regelagent, Szenarien und Auswertung koennen parallel weiterentwickelt werden.
 

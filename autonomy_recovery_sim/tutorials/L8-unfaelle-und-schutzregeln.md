@@ -69,9 +69,10 @@ python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/famil
 | `released_sprint3.txt`, `tracked`, `off` | 31 von 36, 1 Unfall nicht gemeldet, Einstufung D | 32 von 36, kein Unfall, Einstufung B |
 | `familien_sichtbar.txt`, `off` | 6 von 6 | 6 von 6 |
 
-Auf den sichtbaren Familien seht ihr keinen Unterschied. In den verdeckten Varianten
-verursacht der L7-Agent mit `off` einen Unfall mit einem Radfahrer, den nur die zweite Quelle
-verhindert.
+Auf den sechs Einstiegsfällen seht ihr keinen Unterschied. Prüft deshalb auch
+`familien_alle.txt` mit `--guardrails off`. Untersucht bei `f5_radfahrer_hinten` am Trace,
+welche Beobachtungen die Wende absichern und was die zweite Quelle beiträgt.
+Messt anschließend weitere Seeds und untersucht die Abweichungen.
 
 ## Was typischerweise schiefgeht
 

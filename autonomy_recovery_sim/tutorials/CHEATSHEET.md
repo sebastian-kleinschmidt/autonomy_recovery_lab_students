@@ -48,7 +48,7 @@ python3 -m autonomy_recovery_sim.tutorials.vergleich <ordner-a> <ordner-b>
 | `scenario_sets/vla.txt` | VLA-Fahrstack: Selbstauskunft des Fahrstacks gegen die Lage prüfen |
 | `scenario_sets/erkennen.txt` | erst erkennen: steckt das Fahrzeug fest? (Ampel, Zug, Stau, Halt) |
 
-Kumulative Sprint-Freigaben: `released_sprint1.txt` (8),
+Empfohlene kumulative Sprintmengen (alle Fälle sind zugänglich): `released_sprint1.txt` (8),
 `released_sprint2.txt` (20), `released_sprint3.txt` (36) und
 `released_sprint4.txt` (61). Die Zuordnung steht im
 [`Szenarienkatalog`](../SCENARIOS.md).
@@ -194,7 +194,7 @@ Weitere Variablen: `AUTONOMY_RECOVERY_TIMEOUT_S` (90), `AUTONOMY_RECOVERY_MAX_RO
 | L3 | `released_sprint2.txt`, `mehrstufig.txt` |
 | L4, L5 | `released_sprint2.txt --perception tracked`, `familien_sichtbar.txt` |
 | L6 | `vla.txt`, `uncertainty.txt` mit `--perception tracked` |
-| L7 | `familien_sichtbar.txt` |
+| L7 | `familien_sichtbar.txt` zum Einstieg, danach `familien_alle.txt` (18) |
 | L8 | `released_sprint3.txt --perception tracked --guardrails off` |
 
 `--perception tracked` schaltet auf die Objektliste mit Messunsicherheit, `--guardrails off`

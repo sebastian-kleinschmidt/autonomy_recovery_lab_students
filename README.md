@@ -105,7 +105,8 @@ seit dem letzten Lauf verbessert hat.
 Der deterministische 2D-Simulator **AutonomyRecoverySim** bringt mit:
 
 - **61 Szenarien** auf echten Straßen in Hannover (OpenStreetMap), dazu sechs
-  **Szenariofamilien** mit je drei Varianten, deren Lage sich während des Manövers ändert
+  **Szenariofamilien** mit je drei Varianten, deren Lage sich während des Manövers ändert;
+  alle 79 Fälle und ihre Erfolgskriterien sind von Anfang an zugänglich
 - **24 High-Level-Befehle**, darunter Phasenmanöver wie vortasten, überholen und wenden,
   mit Regelprüfung, Sicherheitsprüfung und Kostenmodell
 - zwei **Wahrnehmungsmodelle**: fertige Urteile oder eine Objektliste mit Messunsicherheit im
@@ -118,7 +119,7 @@ Der deterministische 2D-Simulator **AutonomyRecoverySim** bringt mit:
 - eine **Browseroberfläche** mit 2D- und 3D-Ansicht und einer Recovery Console,
   über die ihr den Agenten von Hand spielt
 - **Batchläufe** mit HTML-Bericht, Fortschritt seit dem letzten Lauf, Wiederholungen und
-  verdeckten Prüffällen
+  reproduzierbaren Seed-Variationen
 
 Der Simulator nutzt ausschließlich die Python-Standardbibliothek. Er läuft
 ohne GPU, Modellgewichte oder Clusterzugang.
@@ -174,7 +175,7 @@ im Terminal mit `Ctrl+C` beenden. Zum Vergleich übernimmt die Referenzheuristik
 python -m autonomy_recovery_sim.live --agent baseline
 ```
 
-Der erste reproduzierbare Vergleich nutzt die acht Fälle der Sprint-1-Freigabe:
+Der erste reproduzierbare Vergleich nutzt die acht empfohlenen Fälle für Sprint 1:
 
 ```bash
 python -m autonomy_recovery_sim batch --release sprint1 --agent baseline
@@ -239,7 +240,7 @@ Der ganze Track ist ohne Schlüssel machbar; für L5 gibt es ein Spielmodell
 
 **Referenz** für alle: [Simulator](autonomy_recovery_sim/README.md) (Agentenvertrag,
 Wahrnehmung, Prüfmodi, Auslöser), [Befehle](autonomy_recovery_sim/COMMANDS.md) (Parameter,
-Regeln, Kosten, Einstufung) und [Szenarien](autonomy_recovery_sim/SCENARIOS.md) (Freigaben,
+Regeln, Kosten, Einstufung) und [Szenarien](autonomy_recovery_sim/SCENARIOS.md) (Lernpfad,
 Familien).
 
 **Einstiegsveranstaltung:** Präsentation als [HTML](docs/Auftakt_Autonomy_Recovery_Lab.html)
@@ -270,6 +271,7 @@ und [PPTX](docs/Auftakt_Autonomy_Recovery_Lab.pptx).
 python -m unittest tests.test_autonomy_recovery_sim   # Selbsttest, gut eine halbe Minute
 python -m unittest discover -s tests                   # alle Tests, rund zehn Minuten
 python autonomy_recovery_sim/scripts/build_scenario_sets.py --check
+python autonomy_recovery_sim/scripts/build_families.py --check
 ```
 
 Die Tests brauchen weder Netzwerk noch API-Schlüssel. Laufzeitausgaben unter
@@ -319,7 +321,7 @@ willkommen:
 
 Neue Szenarien beschreibt die [Simulator-Dokumentation](autonomy_recovery_sim/README.md);
 der Katalog in [SCENARIOS.md](autonomy_recovery_sim/SCENARIOS.md) zeigt, wie
-sie in die gestuften Freigaben kommen.
+sie in die empfohlenen Sprintmengen eingeordnet werden.
 
 <p align="right">(<a href="#readme-top">nach oben</a>)</p>
 

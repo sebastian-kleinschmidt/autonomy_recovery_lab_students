@@ -18,8 +18,8 @@ jedem Szenario. So erlebt nicht nur eine Person die Oberfläche.
 aus Aufgabe F ein Fall nach Wahl und aus Aufgabe G die Szenarien `hannover_ampel_rot`
 und `hannover_ampel_ausgefallen`. Der Rest von E und G sowie Aufgabe H sind Vertiefungen.
 
-Die Fälle aus F und G sind ein bewusster **Vorgriff**: Regulär werden sie erst in Sprint 3
-freigegeben (siehe [Szenarienkatalog](../SCENARIOS.md)). Hier sollt ihr sie nur einmal von
+Die Fälle aus F und G sind ein bewusster **Vorgriff**: Im empfohlenen Lernpfad werden sie
+erst in Sprint 3 systematisch bearbeitet (siehe [Szenarienkatalog](../SCENARIOS.md)). Hier sollt ihr sie nur einmal von
 Hand erleben, damit ihr wisst, worauf euer Programm später achten muss. Systematisch
 untersucht werden sie arbeitsteilig in [L6](L6-alpamayo-misstrauen.md).
 

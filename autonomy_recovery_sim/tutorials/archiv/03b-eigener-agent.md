@@ -140,7 +140,7 @@ keine Streuung, und euer eigener Loop darf deutlich anders ausfallen.
 - Nur über die `AgentSession` an Informationen kommen. Kein Zugriff auf Szenario-Dateien,
   Engine oder Ground Truth.
 - Eine Änderung pro Messung, jede Messung mit Vorhersage im Journal.
-- Entwickeln auf den freigegebenen Sets, bewertet wird zusätzlich auf verdeckten Varianten.
+- Alle Szenarien sind öffentlich; nutzt die empfohlenen Sprintmengen und prüft zusätzlich weitere Seeds.
 
 ## Weiterführende Ideen
 

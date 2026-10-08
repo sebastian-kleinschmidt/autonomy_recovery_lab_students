@@ -3,11 +3,12 @@
 
 Gleiche Schnittstelle und gleiches Label, aber veraenderte Geometrien,
 Geschwindigkeiten und Zeitpunkte. Derselbe Seed liefert dieselben Varianten.
-Teams koennen damit eigene Varianten erzeugen; die Lehrenden erzeugen die
-verdeckten Prueffaelle mit einem eigenen, nicht veroeffentlichten Seed. Beispiel:
+Alle Ausgangsszenarien sind öffentlich. Teams erzeugen Entwicklungsvarianten mit
+dokumentierten Seeds; nach dem Freeze testen sie weitere Seeds und dokumentieren diese
+ebenfalls. Die inhaltlichen Fälle und Referenzlabels bleiben gleich. Beispiel:
 
     python3 autonomy_recovery_sim/scripts/make_variants.py autonomy_recovery_sim/scenario_sets/public.txt \
-        --count 3 --seed 2026 --output artifacts/hidden --check
+        --count 3 --seed 2026 --output artifacts/varianten/seed-2026 --check
 """
 
 from __future__ import annotations
@@ -43,9 +44,17 @@ def make_variant(data: dict, source: Path, output: Path, rng: random.Random, ind
         lowest = min(actor["s_m"] for actor in actors)
         highest = max(actor["s_m"] for actor in actors)
         shift = rng.uniform(-SHIFT_M, SHIFT_M)
-        # Akteure bleiben vor dem Ego-Start und innerhalb der Strecke.
-        shift = max(shift, variant["ego"]["start_s_m"] + 20.0 - lowest, 5.0 - lowest)
-        shift = min(shift, road_length_m - 5.0 - highest)
+        # Kleine Verschiebungen erhalten die Ausgangslage, auch Verkehr hinter dem Ego.
+        # Bereits randnahe Akteure bleiben zulässig, statt die ganze Gruppe nach vorn zu ziehen.
+        lower = max(-SHIFT_M, min(5.0, lowest) - lowest)
+        upper = min(SHIFT_M, max(road_length_m - 5.0, highest) - highest)
+        ego_start = variant["ego"]["start_s_m"]
+        for actor in actors:
+            if actor["s_m"] < ego_start:
+                upper = min(upper, ego_start - actor["s_m"] - 0.01)
+            elif actor["s_m"] > ego_start:
+                lower = max(lower, ego_start - actor["s_m"] + 0.01)
+        shift = max(lower, min(upper, shift))
         factor = rng.uniform(*SPEED_FACTOR)
         time_shift = rng.uniform(-TIME_SHIFT_S, TIME_SHIFT_S)
         for actor in actors:
@@ -80,14 +89,14 @@ def main() -> int:
             target.write_text(json.dumps(variant, indent=2, ensure_ascii=False) + "\n", encoding="utf8")
             load_scenario(target)  # Schema- und Plausibilitaetspruefung
             written.append(target)
-    (args.output / "hidden.txt").write_text(
+    (args.output / "variants.txt").write_text(
         f"# Varianten mit Seed {args.seed}\n"
         + "".join(f"{target.name}\n" for target in written),
         encoding="utf8",
     )
     print(f"{len(written)} Varianten nach {args.output} geschrieben")
     if args.check:
-        batch = run_batch(args.output / "hidden.txt", agent=heuristic_agent, agent_name="baseline")
+        batch = run_batch(args.output / "variants.txt", agent=heuristic_agent, agent_name="baseline")
         summary = batch.to_dict()["summary"]
         print(f"Baseline: {summary['passed_count']}/{summary['scenario_count']} bestanden, Kollisionen {summary['collision_count']}")
         for item in batch.evaluations:

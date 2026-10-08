@@ -47,6 +47,11 @@ Bei Modellagenten: Modell, Endpunkt, Temperatur (fest 0), Systemprompt im Wortla
 Welche Szenariomengen, wie oft wiederholt (`--repeats`)? Welche Kennzahlen (siehe
 [Stufe 6](../06-evaluieren.md#1-was-gemessen-wird))?
 
+Alle Ausgangsszenarien sind öffentlich. Dokumentiert Entwicklungs-Seeds, weitere Seeds nach
+dem Freeze und die Parameter von `scripts/make_variants.py`. Unterscheidet Änderungen am
+Szenario-Seed von Modellwiederholungen mit `--repeats`. Wie wurden auffällige Referenzlabels
+der erzeugten Varianten geprüft?
+
 ### 2.3 Hypothesen
 
 Vor den Läufen aufgeschrieben, je Experiment eine.
@@ -99,8 +104,9 @@ Was funktioniert **nicht**, und warum?
 ## 6. Grenzen
 
 Was zeigt euer Ergebnis **nicht**? Denkt an: Szenariomenge (nur Hannover, nur diese
-Fälle), Anzahl Wiederholungen, ein Modell, Modellannahmen im Kostenmodell (siehe
-[COMMANDS.md](../../COMMANDS.md)), Overfitting auf das öffentliche Set.
+Fälle), getestete Seed-Bereiche, Anzahl Wiederholungen, ein Modell und Modellannahmen im
+Kostenmodell (siehe [COMMANDS.md](../../COMMANDS.md)). Mehrere Seeds belegen Robustheit
+innerhalb bekannter Falltypen; sie belegen keine Verallgemeinerung auf beliebige neue Lagen.
 
 ## 7. Fazit
 
@@ -110,4 +116,5 @@ Drei Sätze: Was haben wir gefragt, was haben wir gefunden, was würden wir als 
 
 - Systemprompts im Wortlaut
 - vollständige `batch-result.json`-Dateien (oder Verweis auf das Repository)
+- Entwicklungs- und Abschluss-Seeds sowie Befehle zur Erzeugung der Varianten
 - Fehlerbeispiele aus dem Trace

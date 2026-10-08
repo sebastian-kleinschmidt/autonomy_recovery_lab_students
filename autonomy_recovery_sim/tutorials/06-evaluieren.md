@@ -74,6 +74,11 @@ Ein Vergleich ist nur so gut wie sein Aufbau. Für jedes Experiment:
 4. **Gleiche Szenarien, gleiche Bedingungen.** Modell, Prompt, Szenariomenge und
    Umgebungsvariablen festhalten.
 5. **Wiederholen bei Modellen.** `--repeats N`, mindestens 3, und die Streuung berichten.
+6. **Seeds variieren.** Alle 61 Sprintfälle und alle 18 Familienvarianten sind öffentlich.
+   Erzeugt Varianten mit `scripts/make_variants.py`, getrennt für `released_sprint4.txt` und
+   `familien_alle.txt`; die Befehle stehen im [Szenarienkatalog](../SCENARIOS.md#robustheit-mit-seed-variationen).
+   Nutzt vorab dokumentierte Entwicklungs-Seeds und nach dem Freeze weitere Seeds.
+   Jeder Seed bekommt einen eigenen Ordner. `--repeats` ändert den Szenario-Seed nicht.
 
 Vergleich zweier Läufe:
 
@@ -99,7 +104,7 @@ Dreifache. Wer nur „bestanden“ vergleicht, sieht die Hälfte.
 | Fehler | Beispiel | Gegenmittel |
 |---|---|---|
 | **Rauschen für Effekt halten** | 2 von 3 statt 3 von 3 nach einer Promptänderung | mehr Wiederholungen, mehr Szenarien |
-| **Auf das öffentliche Set trainieren** | Prompt enthält Szenarionamen oder ihre Lösung | keine IDs; ein Teil der Bewertung sind unbekannte Varianten |
+| **Szenarien auswendig behandeln** | Entscheidungstabelle nach ID oder Referenzlabel | Beobachtungen als Grundlage; Code-Review und weitere Seeds |
 | **Nur eine Kennzahl beachten** | Bestehensquote steigt, Kosten verdoppeln sich | alle Kennzahlen der Tabelle in Abschnitt 1 |
 | **Ausreißer verstecken** | ein Kollisionslauf fehlt im Bericht | Rohberichte unverändert abgeben |
 | **Zu früh generalisieren** | „Modell A ist besser“ nach fünf Fällen | Grenzen der Aussage nennen |
@@ -126,6 +131,7 @@ Eine Häufigkeitstabelle über eure Fehler zeigt sofort, wo sich Verbesserung lo
 Jeder muss eure Zahlen nachvollziehen können. Haltet fest:
 
 - **Befehle** wörtlich, mit allen Parametern (`--agent`, `--repeats`, `--output`).
+- **Seeds** für Entwicklung und Abschlusslauf sowie Parameter des Variationsgenerators.
 - **Version** des Codes (`git rev-parse HEAD`) und der Szenariomenge.
 - **Modell und Endpunkt** (`AUTONOMY_RECOVERY_MODEL`, `AUTONOMY_RECOVERY_BASE_URL`), ohne den Schlüssel.
 - **Prompt** im Wortlaut je Experiment, als Datei im Repository.
@@ -147,7 +153,7 @@ einen guten Bericht von einer Sammlung von Zahlen:
 ## Aufgabe
 
 1. Führt für **drei Varianten** `released_sprint4.txt` im Modell `tracked` und die
-   Szenariofamilien aus: den Startstand aus L1, euren Agenten **ohne Modell** (Teil A,
+   Szenariofamilien (`familien_alle.txt`, alle 18 Varianten) aus: den Startstand aus L1, euren Agenten **ohne Modell** (Teil A,
    `AUTONOMY_RECOVERY_MODEL=none`) und denselben Agenten **mit Modell** (Teil B, mit
    `--repeats 3`). Wertet `erkennen.txt` zusätzlich als eigene Teilmenge für Fehlalarme und
    verpasste Eingriffe aus. Den Referenzadapter (`student_llm_agent.py`, nur Modell) nehmt ihr
@@ -155,7 +161,10 @@ einen guten Bericht von einer Sammlung von Zahlen:
 2. Vergleicht sie mit dem Hilfsprogramm. Formuliert **drei Aussagen**, die durch die
    Zahlen gedeckt sind, und eine, die *nicht* gedeckt wäre (und warum nicht).
 3. Kategorisiert die Fehler eures besten Agenten in der Tabelle aus Abschnitt 5.
-4. Schreibt den Bericht nach der Vorlage.
+4. Prüft die eingefrorenen Varianten mit weiteren Seeds und dokumentiert Seeds,
+   Referenzprüfung und alle Ergebnisse. Die Aussage gilt für die getesteten Falltypen
+   und Variationsbereiche, nicht für beliebige neue Verkehrssituationen.
+5. Schreibt den Bericht nach der Vorlage.
 
 ## Team-Checkpoint
 

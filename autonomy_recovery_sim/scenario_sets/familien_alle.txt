@@ -1,0 +1,19 @@
+# Alle 18 veröffentlichten Varianten der sechs Familien.
+../families/f1_muellabfuhr.json
+../families/f2_fahrer_weg.json
+../families/f3_pkw_kommt.json
+../families/f4_frueh_zu.json
+../families/f5_frei.json
+../families/f6_stau_loest_sich.json
+../families/f1_unfallstelle.json
+../families/f1_umzug.json
+../families/f2_fahrer_am_steuer.json
+../families/f2_bote_kommt.json
+../families/f3_radfahrer_kommt.json
+../families/f3_niemand_kommt.json
+../families/f4_spaet_zu.json
+../families/f4_nur_stau.json
+../families/f5_radfahrer_hinten.json
+../families/f5_gegenverkehr.json
+../families/f6_stau_faehrt_an.json
+../families/f6_panne.json

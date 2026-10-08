@@ -303,7 +303,9 @@ Verlässlichkeit [9]. Für ein System, das jedes Mal funktionieren soll, zählt 
 
 ### Weitere Regeln
 
-- **Getrennte Fälle.** Entwickelt wird auf bekannten Fällen, bewertet auf verdeckten Varianten.
+- **Getrennte Messbedingungen.** Alle Szenarien und Erfolgskriterien sind bekannt. Entwickelt
+  mit dokumentierten Seeds und prüft nach dem Freeze weitere Seeds; dokumentiert auch diese.
+  Das prüft Robustheit innerhalb der bekannten Falltypen.
   Wer auf Testfall-IDs optimiert, misst sein Gedächtnis, nicht seinen Agenten.
 - **Baselines.** Ein Agent ist nur so gut wie sein Vergleich: ein einfacher Regelagent, ein
   immer wartender Agent, ein Referenzsystem.
@@ -371,7 +373,7 @@ und die Sicherheitsprüfung bleiben außerhalb des Modells.
 | Prompt-Injection | `hannover_injektion` | L6 |
 | Planen unter sich ändernder Lage | Phasenmanöver mit Checkpoints, Auslöser | L7 |
 | Guardrails | Schema, Regel- und Sicherheitsprüfung, Budgets, fail-safe; Prüfmodi `strict`, `advisory`, `off` | jeder Lauf, eigene Schutzregeln in L8 |
-| Messen | Prüfstand mit Befund je Fall, Fortschritt seit dem letzten Lauf, Wiederholungen, verdeckte Varianten | jeder Lauf, Stufe 6 |
+| Messen | Prüfstand mit Befund je Fall, Fortschritt seit dem letzten Lauf, Wiederholungen, Seed-Variationen | jeder Lauf, Stufe 6 |
 
 Agenten können euch außerdem als Coding-Werkzeug und bei der Auswertung unterstützen.
 Die Abschnitte 5 bis 7 gelten dabei genauso: Jede Zahl, die ein Agent erzeugt,

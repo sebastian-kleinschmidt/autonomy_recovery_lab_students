@@ -193,7 +193,7 @@ für jeden Fall den Grund.
 3. **Begründen:** Zu jedem dieser Fälle: In welchem Werkzeugfeld erkennt ihr ihn?
    Sagt es in einem Satz, den man einem Programm beibringen kann.
 4. **Testen:** Lasst `uncertainty.txt` und `vla.txt` laufen, mit einem Modell zusätzlich mit
-   `--repeats 3`. Am Sprintende prüft `--release sprint3` alle bisher freigegebenen Fälle.
+   `--repeats 3`. Am Sprintende prüft `--release sprint3` alle bis dahin empfohlenen Fälle.
 
 ```bash
 python3 -m autonomy_recovery_sim batch autonomy_recovery_sim/scenario_sets/uncertainty.txt \

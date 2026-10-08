@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "families": [
     {
       "id": "f1_muellabfuhr",
@@ -7,7 +7,26 @@
       "title": "Verdeckte Ursache",
       "level": "C",
       "goal": "Erst Information kaufen (ausscheren bis zum Checkpoint), dann handeln.",
-      "visible": true
+      "visible": true,
+      "introductory": true
+    },
+    {
+      "id": "f1_unfallstelle",
+      "family": "F1",
+      "title": "Verdeckte Ursache",
+      "level": "C",
+      "goal": "Erst Information kaufen (ausscheren bis zum Checkpoint), dann handeln.",
+      "visible": true,
+      "introductory": false
+    },
+    {
+      "id": "f1_umzug",
+      "family": "F1",
+      "title": "Verdeckte Ursache",
+      "level": "C",
+      "goal": "Erst Information kaufen (ausscheren bis zum Checkpoint), dann handeln.",
+      "visible": true,
+      "introductory": false
     },
     {
       "id": "f2_fahrer_weg",
@@ -15,7 +34,26 @@
       "title": "Hindernis reagiert",
       "level": "B",
       "goal": "Wo liegt der Punkt ohne Rückkehr? Hinweise auf einen Fahrer ernst nehmen.",
-      "visible": true
+      "visible": true,
+      "introductory": true
+    },
+    {
+      "id": "f2_fahrer_am_steuer",
+      "family": "F2",
+      "title": "Hindernis reagiert",
+      "level": "B",
+      "goal": "Wo liegt der Punkt ohne Rückkehr? Hinweise auf einen Fahrer ernst nehmen.",
+      "visible": true,
+      "introductory": false
+    },
+    {
+      "id": "f2_bote_kommt",
+      "family": "F2",
+      "title": "Hindernis reagiert",
+      "level": "B",
+      "goal": "Wo liegt der Punkt ohne Rückkehr? Hinweise auf einen Fahrer ernst nehmen.",
+      "visible": true,
+      "introductory": false
     },
     {
       "id": "f3_pkw_kommt",
@@ -23,7 +61,26 @@
       "title": "Gegenverkehr aus der Verdeckung",
       "level": "C",
       "goal": "Verdeckung ernst nehmen, ohne zu erstarren: am Checkpoint neu entscheiden.",
-      "visible": true
+      "visible": true,
+      "introductory": true
+    },
+    {
+      "id": "f3_radfahrer_kommt",
+      "family": "F3",
+      "title": "Gegenverkehr aus der Verdeckung",
+      "level": "C",
+      "goal": "Verdeckung ernst nehmen, ohne zu erstarren: am Checkpoint neu entscheiden.",
+      "visible": true,
+      "introductory": false
+    },
+    {
+      "id": "f3_niemand_kommt",
+      "family": "F3",
+      "title": "Gegenverkehr aus der Verdeckung",
+      "level": "C",
+      "goal": "Verdeckung ernst nehmen, ohne zu erstarren: am Checkpoint neu entscheiden.",
+      "visible": true,
+      "introductory": false
     },
     {
       "id": "f4_frueh_zu",
@@ -31,7 +88,26 @@
       "title": "Rückweg verbaut",
       "level": "D",
       "goal": "Optionen haben einen Wert: früh entscheiden, solange Wenden noch möglich ist.",
-      "visible": true
+      "visible": true,
+      "introductory": true
+    },
+    {
+      "id": "f4_spaet_zu",
+      "family": "F4",
+      "title": "Rückweg verbaut",
+      "level": "D",
+      "goal": "Optionen haben einen Wert: früh entscheiden, solange Wenden noch möglich ist.",
+      "visible": true,
+      "introductory": false
+    },
+    {
+      "id": "f4_nur_stau",
+      "family": "F4",
+      "title": "Rückweg verbaut",
+      "level": "D",
+      "goal": "Optionen haben einen Wert: früh entscheiden, solange Wenden noch möglich ist.",
+      "visible": true,
+      "introductory": false
     },
     {
       "id": "f5_frei",
@@ -39,7 +115,26 @@
       "title": "Wende mit Tücken",
       "level": "D",
       "goal": "Wenden ist selbst ein riskantes Manöver: Verkehr in beiden Richtungen prüfen.",
-      "visible": true
+      "visible": true,
+      "introductory": true
+    },
+    {
+      "id": "f5_radfahrer_hinten",
+      "family": "F5",
+      "title": "Wende mit Tücken",
+      "level": "D",
+      "goal": "Wenden ist selbst ein riskantes Manöver: Verkehr in beiden Richtungen prüfen.",
+      "visible": true,
+      "introductory": false
+    },
+    {
+      "id": "f5_gegenverkehr",
+      "family": "F5",
+      "title": "Wende mit Tücken",
+      "level": "D",
+      "goal": "Wenden ist selbst ein riskantes Manöver: Verkehr in beiden Richtungen prüfen.",
+      "visible": true,
+      "introductory": false
     },
     {
       "id": "f6_stau_loest_sich",
@@ -47,7 +142,26 @@
       "title": "Lage entspannt sich",
       "level": "B",
       "goal": "Vor dem Punkt ohne Rückkehr neu prüfen, aber nicht übervorsichtig sein.",
-      "visible": true
+      "visible": true,
+      "introductory": true
+    },
+    {
+      "id": "f6_stau_faehrt_an",
+      "family": "F6",
+      "title": "Lage entspannt sich",
+      "level": "B",
+      "goal": "Vor dem Punkt ohne Rückkehr neu prüfen, aber nicht übervorsichtig sein.",
+      "visible": true,
+      "introductory": false
+    },
+    {
+      "id": "f6_panne",
+      "family": "F6",
+      "title": "Lage entspannt sich",
+      "level": "B",
+      "goal": "Vor dem Punkt ohne Rückkehr neu prüfen, aber nicht übervorsichtig sein.",
+      "visible": true,
+      "introductory": false
     }
   ]
 }
